@@ -7,9 +7,6 @@
 
   <p>Name </p>
 
-    <%= @item.name %>
-   
-
 
   <p>Photos</p>
 
@@ -25,6 +22,7 @@
     <p> Preloved</p>
   <% else %>
     <p> New </p>
-<% end %>
+  <% end %>
 
+  <p> posted by <%= @item.user.name %>
  </div>
