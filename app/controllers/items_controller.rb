@@ -1,14 +1,18 @@
 class ItemsController < ApplicationController
-	  def index
+
 	  	before_action :authenticate_user!, :except => [ :show, :index ]
-	  	@items = Item.all 
-	  	
+
+      def index
+        @items = Item.all
+            if current_user
+             @users = User.find(current_user.id)
+          end
 	  end
 
 	  def show
 	  	@item = Item.find(params[:id])
 	  	@categories = Category.all
-	 
+
 	  end
 
 	  def new
@@ -27,9 +31,9 @@ class ItemsController < ApplicationController
 	  	puts params.inspect
 	  	puts "+++++++++++++%%%%%%%%%%%%%"
 	  	puts item_params.inspect
-	  	
+
 	  	@item = Item.new(item_params)
-	  	
+
 	  	uploaded_file = params[:item][:picture].path
 
 
@@ -40,12 +44,12 @@ class ItemsController < ApplicationController
 	  puts cloudnary_file.inspect
 	    if @item.save
 	      redirect_to @item
-	     
+
 	    else
 	    	@categories = Category.all
 		puts "==============++++++++++++"
 	      render 'new'
-	      
+
 	    end
 	  end
 
@@ -61,7 +65,7 @@ class ItemsController < ApplicationController
 	    @item.destroy
 	    redirect_to root_path
 	  end
-	
+
 
 
 	private
@@ -70,5 +74,5 @@ class ItemsController < ApplicationController
 	    params.require(:item).permit(:name, :description, :preloved, :availability, :public_id,  :category_id)
 	  end
 
-	  
+
 end
