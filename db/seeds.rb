@@ -8,3 +8,8 @@
 5.times do |i|
   Category.create(category: "Category ##{i}")
 end
+
+5.times do |i|
+
+	Item.create(name: "Dress ##{i}", description: "A dress", public_id: "sz1pne0rmk2jsh5ti5hn", preloved: "True")
+end

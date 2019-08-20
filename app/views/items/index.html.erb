@@ -2,24 +2,24 @@
 
 <h1>All Items</h1>
 
-
-
   <% @items.each do |item| %>
       <%= item.name %>
       <%= item.category %>
       <%= item.description %>
-      <%= item.preloved%>
+      <%= item.preloved %>
   
         
       <%= link_to 'Show', item_path(item) %>
-        
-      <%= link_to 'Edit', edit_item_path(item) %>
-      <%= link_to 'Destroy', item_path(item),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
+      <% if user_signed_in? %>
+        <%= link_to 'Edit', edit_item_path(item) %>
+        <%= link_to 'Destroy', item_path(item),
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %>
+          <% end %>
+      <% end %>
     
-  <% end %>
+  
+
 
 </div>
  
