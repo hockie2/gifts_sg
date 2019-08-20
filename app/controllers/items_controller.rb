@@ -1,6 +1,4 @@
 class ItemsController < ApplicationController
-
-
 	  	before_action :authenticate_user!, :except => [ :show, :index ]
 
       def index
@@ -25,34 +23,25 @@ class ItemsController < ApplicationController
 
 	  def edit
 	  	@item = Item.find(params[:id])
+	  	@categories = Category.all
 	  end
 
 	  def create
-	  	puts "+++++++++++++++++************"
-
-	  	puts params.inspect
-	  	puts "+++++++++++++%%%%%%%%%%%%%"
-	  	puts item_params.inspect
-
 	  	@item = Item.new(item_params)
 
 	  	uploaded_file = params[:item][:picture].path
-      # puts "uploaded file:"
-      # puts uploaded_file
-
+     
   		cloudnary_file = Cloudinary::Uploader.upload(uploaded_file)
-  		# puts cloudnary_file["public_id"]
+  		
   		@item.public_id = cloudnary_file["public_id"]
       @item.user_id = current_user.id
-  		puts "++++++++++++++++++++++++++++++++++++++++++++"
-      # puts cloudnary_file.inspect
-      puts @item
+  	
 	    if @item.save
 	      redirect_to @item
 
 	    else
 	    	@categories = Category.all
-        puts "failed to save, rerendering"
+
 	      render 'new'
 
 	    end
@@ -68,9 +57,8 @@ class ItemsController < ApplicationController
 	  def destroy
 	  	@item = Item.find(params[:id])
 	    @item.destroy
-	    redirect_to root_path
+	    redirect_to "/items"
 	  end
-
 
 
 	private
