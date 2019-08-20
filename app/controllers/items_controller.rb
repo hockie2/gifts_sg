@@ -1,8 +1,12 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, :except => [ :show, :index ]
+	  	before_action :authenticate_user!, :except => [ :show, :index ]
 
-	  def index
-	  	@items = Item.all
+      def index
+        @items = Item.all
+            if current_user
+             @users = User.find(current_user.id)
+          end
+
 	  end
 
 	  def show
@@ -34,6 +38,7 @@ class ItemsController < ApplicationController
   	
 	    if @item.save
 	      redirect_to @item
+
 	    else
 	    	@categories = Category.all
 
@@ -63,4 +68,6 @@ class ItemsController < ApplicationController
 	  end
 
 
+
 end
+

@@ -1,23 +1,20 @@
-<div class="container">
+<div class="main_wrapper">
 
-<h1>All Items</h1>
+<% @items.each do |item| %>
+    <div class="post_wrapper">
 
-  <% @items.each do |item| %>
-      <%= item.name %>
-      <%= item.category %>
-      <%= item.description %>
+        <div class="top_wrapper d-flex align-items-center d-flex justify-content-between">
+            <span class="title"><div id="profile_pic"></div><%= item.name %></span>
 
-      <%= item.preloved %>
-  
-        
-      <%= link_to 'Show', item_path(item) %>
-      <% if user_signed_in? %>
-        <%= link_to 'Edit', edit_item_path(item) %>
-        <%= link_to 'Destroy', item_path(item),
-                method: :delete,
-                data: { confirm: 'Are you sure?' } %>
-          <% end %>
-      <% end %>
-    
-</div>
-
+        </div>
+        <div id="photo"><%= link_to item_path(item) do %><%= cl_image_tag(item.public_id) %><% end %></div>
+        <div class="description_wrapper">
+            <span id="description"><%= item.description %></span>
+        <div id="timestamp"><%= item.updated_at.strftime('%d %B, %l:%M%P') %></div>
+        <div class="bottom_wrapper">
+            <div><%= link_to 'Edit', edit_item_path(item) %> | <%= link_to 'Destroy', item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+        </div>
+        </div>
+  </div>
+<% end %>
