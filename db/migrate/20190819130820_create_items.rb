@@ -6,6 +6,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.text :description
       t.boolean :preloved, default: true
       t.text :availability, default: "Available"
+      t.references :user
 
       t.timestamps
     end
