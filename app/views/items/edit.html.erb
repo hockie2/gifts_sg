@@ -1,0 +1,52 @@
+<div class ='container'>
+  
+<%= form_with scope: :item, url: items_path, local: true do |form| %>
+  <p>
+    <%= form.label :Category %>
+    <%= form.collection_select :category_id, @categories, :id, :category %>
+  </p>
+  <p>
+      <%= form.label :name %><br>
+      <%= form.text_field :name %>
+  </p>
+
+  <p>
+      <%= form.label :Photos%><br>
+      <%= form.text_field :public_id %>
+  </p>
+  <%= form.file_field :attachment, :multiple => true %>
+    
+  <p class="error">
+     <%= show_errors(@item, :name) %>
+  </p>
+  <p>
+      <%= form.label :Description%><br>
+      <%= form.text_field :description %>
+  </p>
+    
+  <p class="error">
+     <%= show_errors(@item, :description) %>
+  </p>
+
+  <p>
+      <%= form.label :Preloved %>
+      <%= select_tag("preloved", options_for_select(["Preloved","New"]))%>
+
+  </p>
+     
+  <p class="error">
+     <%= show_errors(@item, :preloved) %>
+  </p>
+
+  <p>
+      <%= form.label :Status %>
+      <%= select_tag("availability", options_for_select(["Available","Reserved", "Closed"]))%>
+
+  </p>
+     
+  
+
+    <%= form.submit %>
+
+<% end %>
+</div>

@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dbnsbiopm
+  api_key: '673986794923825'
+  api_secret: tSEe1LKaU9UZeRNeNbvdqQd_pAU
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: dbnsbiopm
+  api_key: '673986794923825'
+  api_secret: tSEe1LKaU9UZeRNeNbvdqQd_pAU
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: dbnsbiopm
+  api_key: '673986794923825'
+  api_secret: tSEe1LKaU9UZeRNeNbvdqQd_pAU
+  enhance_image_tag: true
+  static_file_support: false
