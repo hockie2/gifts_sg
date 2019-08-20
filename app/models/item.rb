@@ -7,4 +7,6 @@ class Item < ApplicationRecord
   validates :description, presence: true, length: { minimum: 3, maximum: 500 }
   validates :preloved, presence: true
 
+
 end
+
