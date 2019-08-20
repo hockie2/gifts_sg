@@ -7,11 +7,14 @@ class ItemsController < ApplicationController
 
 	  def show
 	  	@item = Item.find(params[:id])
+	  	@categories = Category.all
+	 
 	  end
 
 	  def new
 
-	 
+	  	@categories = Category.all
+
 	  end
 
 	  def edit
@@ -19,19 +22,29 @@ class ItemsController < ApplicationController
 	  end
 
 	  def create
-	  # 	@kopi = Kopi.new(kopi_params)
-		
-	  #   @kopi.user = current_user
+	  	puts "+++++++++++++++++************"
 
-	  #   if @item.save
-	  #     redirect_to @item
+	  	puts params.inspect
+	  	puts "+++++++++++++%%%%%%%%%%%%%"
+	  	puts item_params.inspect
+	  	
+	  	@item = Item.new(item_params)
+	  	
+	  	uploaded_file = params[:item][:picture].path
+
+
+  		cloudnary_file = Cloudinary::Uploader.upload(uploaded_file)
+  		puts cloudnary_file["public_id"]
+  		@item.public_id = cloudnary_file["public_id"]
+  		puts "++++++++++++++++++++++++++++++++++++++++++++"
+	  puts cloudnary_file.inspect
+	    if @item.save
+	      redirect_to @item
 	     
-	  #   else
-	  #   	@farms = Farm.all
-		
-			# @roasts =Roast.all
-
-	  #     render 'new'
+	    else
+	    	@categories = Category.all
+		puts "==============++++++++++++"
+	      render 'new'
 	      
 	    end
 	  end
@@ -54,7 +67,7 @@ class ItemsController < ApplicationController
 	private
 
 	  def item_params
-	    params.require(:item).permit(:name, :description, :preloved, :availability, :public_id)
+	    params.require(:item).permit(:name, :description, :preloved, :availability, :public_id,  :category_id)
 	  end
 
 	  
