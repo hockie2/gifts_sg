@@ -8,8 +8,8 @@ before_action :authenticate_user!, :except => [ :show, :index ]
 
 
   def new
-    # allKopi = Kopi.all
-    # @kopis = allKopi.sort_by{|kopi| kopi.id}
+    allUser = User.all
+    @users = allUser.sort_by{|user| user.id}
   end
 
   def create
@@ -26,23 +26,23 @@ before_action :authenticate_user!, :except => [ :show, :index ]
   end
 
   def edit
-    # allKopi = Kopi.all
-    # @kopis = allKopi.sort_by{|kopi| kopi.id}
-    # @customer = Customer.find(params[:id])
+    allUser = User.all
+    @users = allUser.sort_by{|user| user.id}
+    @user = User.find(params[:id])
 
   end
 
   def update
-    # @customer = customer.find(params[:id])
-    # @customer.update(customer_params)
-    # redirect_to @customer
+    @user = user.find(params[:id])
+    @user.update(user_params)
+    redirect_to @user
 
   end
 
   def destroy
-    # @customer = customer.find(params[:id])
-    # @customer.destroy
-    # redirect_to customers_path
+    @user = user.find(params[:id])
+    @user.destroy
+    redirect_to users_path
   end
 
 
