@@ -1,14 +1,16 @@
 class ItemsController < ApplicationController
+
+  before_action :authenticate_user!, :except => [ :show, :index ]
+
 	  def index
-	  	before_action :authenticate_user!, :except => [ :show, :index ]
-	  	@items = Item.all 
-	  	
+	  	@items = Item.all
+
 	  end
 
 	  def show
 	  	@item = Item.find(params[:id])
 	  	@categories = Category.all
-	 
+
 	  end
 
 	  def new
@@ -27,25 +29,26 @@ class ItemsController < ApplicationController
 	  	puts params.inspect
 	  	puts "+++++++++++++%%%%%%%%%%%%%"
 	  	puts item_params.inspect
-	  	
-	  	@item = Item.new(item_params)
-	  	
-	  	uploaded_file = params[:item][:picture].path
 
+	  	@item = Item.new(item_params)
+
+	  	uploaded_file = params[:item][:picture].path
+      # puts "uploaded file:"
+      # puts uploaded_file
 
   		cloudnary_file = Cloudinary::Uploader.upload(uploaded_file)
-  		puts cloudnary_file["public_id"]
+  		# puts cloudnary_file["public_id"]
   		@item.public_id = cloudnary_file["public_id"]
+      @item.user_id = current_user.id
   		puts "++++++++++++++++++++++++++++++++++++++++++++"
-	  puts cloudnary_file.inspect
+      # puts cloudnary_file.inspect
+      puts @item
 	    if @item.save
 	      redirect_to @item
-	     
 	    else
 	    	@categories = Category.all
-		puts "==============++++++++++++"
+        puts "failed to save, rerendering"
 	      render 'new'
-	      
 	    end
 	  end
 
@@ -61,7 +64,7 @@ class ItemsController < ApplicationController
 	    @item.destroy
 	    redirect_to root_path
 	  end
-	
+
 
 
 	private
@@ -70,5 +73,5 @@ class ItemsController < ApplicationController
 	    params.require(:item).permit(:name, :description, :preloved, :availability, :public_id,  :category_id)
 	  end
 
-	  
+
 end
