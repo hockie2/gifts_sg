@@ -24,8 +24,10 @@ default: &default
 development:
   <<: *default
   database: gifts_sg_development
+  username: hockie2
+  password: bhhorse2
 
-  
+
 
 
 

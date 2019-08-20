@@ -27,12 +27,10 @@ ActiveRecord::Schema.define(version: 2019_08_20_021147) do
     t.text "description"
     t.boolean "preloved", default: true
     t.text "availability", default: "Available"
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_id"
     t.index ["category_id"], name: "index_items_on_category_id"
-    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
