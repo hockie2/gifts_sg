@@ -20,11 +20,25 @@
            <% end %>
 
           <p> posted by <%= @item.user.name %>
+
+				<div>
+          <h5>Comments:</h5>
+          <div>
+          	<% @comments.each do |comment| %>
+          		<h6><%= comment.comment %></h6>
+          		<p>Posted by: <%= comment.user.name%></p>
+          		<p><%= comment.updated_at.strftime('%d %B')%></p>
+          	<% end %>
+          </div>
+
+          </div>
+
+          <div>
           	<% if @reserve.user.email == current_user.email%>
 	          	<%= form_with scope: :comment, url: add_comment_path, local: true do |form| %>
 
 						  <p>
-						    <%= form.label :comment %><br>
+						    <%= form.label :post_your_comment %><br>
 						    <%= form.text_area :comment %>
 						  </p>
 
@@ -33,6 +47,7 @@
 						  </p>
 						<% end %>
 					<% end %>
+				</div>
        </div>
    </div>
 </div>

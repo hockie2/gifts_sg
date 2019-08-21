@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
     puts params[:id].to_i
 
     if @comment.save
-      redirect_to items_path
+      redirect_to item_path
     end
   end
 

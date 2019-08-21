@@ -14,8 +14,9 @@ class ItemsController < ApplicationController
 
       @reserve = Reserve.find{|x| x.item_id == params[:id].to_i}
 
-
 	  	@categories = Category.all
+
+      @comments = Comment.all{|x| x.item_id == params[:id].to_i}
 
         if current_user
             @users = User.find(current_user.id)
