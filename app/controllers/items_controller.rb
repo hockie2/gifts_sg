@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
 
 	  def show
 	  	@item = Item.find(params[:id])
+
 	  	@categories = Category.all
 
 	  end
@@ -46,6 +47,7 @@ class ItemsController < ApplicationController
 
 	    end
 	  end
+	 
 
 	  def update
 	  	@item = Item.find(params[:id])
@@ -59,7 +61,6 @@ class ItemsController < ApplicationController
 	    @item.destroy
 	    redirect_to "/items"
 	  end
-
 
 	private
 

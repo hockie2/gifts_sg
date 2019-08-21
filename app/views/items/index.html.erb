@@ -4,7 +4,6 @@
 
 <% @items.each do |item| %>
     <div class="post_wrapper">
-
         <div class="top_wrapper d-flex align-items-center d-flex justify-content-between">
             <span class="title"><div id="profile_pic"></div><%= item.name %></span>
 
@@ -12,17 +11,32 @@
         <div id="photo"><%= link_to item_path(item) do %><%= cl_image_tag(item.public_id) %><% end %></div>
         <div class="description_wrapper">
             <span id="description"><%= item.description %></span>
-            <div id="timestamp"><%= item.updated_at.strftime('%d %B, %l:%M%P') %></div>
-            <div class="bottom_wrapper">
 
-                <%= link_to 'Show', item_path(item) %>
+        <div id="timestamp"><%= item.updated_at.strftime('%d %B, %l:%M%P') %></div>
+        <div class="bottom_wrapper">
+        <p>posted by  <a href = "/users/<%= item.user.id %>" ><%= item.user.name %></a></p>
+         <%= link_to 'Show', item_path(item) %>
                 <% if user_signed_in? %>
                    <div>
                     <%= link_to 'Edit', edit_item_path(item) %> | <%= link_to 'Destroy', item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %>
                    </div>
                 <% end %>
 
+
             </div>
+        <% elsif user_signed_in? && current_user.email != item.user.email %> 
+            <button class ="btn btn-info reserve"> Reserve </button>
+    
+            <%= link_to 'Show', item_path(item) %>
+        <% else %>
+            <%= link_to 'Show', item_path(item) %>
+        <% end %>
+    
         </div>
   </div>
 <% end %>
+
+
+
+
+
