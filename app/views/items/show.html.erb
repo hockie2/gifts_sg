@@ -8,12 +8,9 @@
            <p>Category</p>
            <%= @item.category %>
 
-
            <p id="items_name"><%= @item.name %><p>
 
-
            <p id="items_description"><%= @item.description %></p>
-
 
             <p> Condition:</p>
            <% if @item.preloved == true %>
@@ -21,7 +18,7 @@
            <% else %>
                 <p> New </p>
            <% end %>
-          
+
           <p> posted by <%= @item.user.name %>
        </div>
    </div>
