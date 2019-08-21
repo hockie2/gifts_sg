@@ -3,9 +3,11 @@ Rails.application.routes.draw do
 
 
   root 'items#index'
+
   devise_for :users
   resources :items, :users, :comments
 
   get '/items/:id/comments/new' => 'comments#new'
+  get "/items/:id/reserve" => 'items#reserve', as: 'reserved_item'
 
 end
