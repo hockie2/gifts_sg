@@ -77,3 +77,27 @@ label{
     margin:20px auto;
     color:white;
 }
+
+#user_inner_wrapper{
+    width:80%;
+    // border:1px solid purple;
+    border-radius: 20px;
+    display: flex;
+    flex-direction:column;
+    // justify-content: center;
+    // flex-wrap:wrap;
+    background-color: white;
+    box-shadow: 5px 5px 18px #247c7a;
+}
+
+#user_top_wrapper{
+    // border:1px solid purple;
+    padding: 10px 10px 0 10px;
+}
+
+#user_bottom_wrapper{
+    // border:1px solid purple;
+    display: flex;
+    flex-wrap:wrap;
+}
+

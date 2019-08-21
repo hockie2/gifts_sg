@@ -11,16 +11,17 @@
 #items_main_wrapper{
     width:100%;
     height:700px;
-    border:1px solid red;
+    // border:1px solid red;
     display: flex;
     justify-content: center;
     flex-direction:row;
     padding:30px;
+    color:#676666;
 }
 
 #items_inner_wrapper{
-    width:90%;
-    border:1px solid purple;
+    width:80%;
+    // border:1px solid purple;
     border-radius: 20px;
     display: flex;
     justify-content: center;
@@ -44,7 +45,7 @@
 
 #items_right{
     width:60%;
-    border:1px solid purple;
+    // border:1px solid purple;
     padding:20px
 }
 
@@ -53,4 +54,11 @@
     // border:1px red solid;
     font-weight: bold;
     font-size: 20px
+}
+
+#item_show_username{
+    font-size: 14px;
+    a{
+        color:grey;
+    }
 }
