@@ -26,8 +26,9 @@ class CommentsController < ApplicationController
     puts "logging comment"
     puts params[:id].to_i
 
-    @comment.save
-    redirect_to @comment
+    if @comment.save
+      redirect_to items_path
+    end
   end
 
   def update

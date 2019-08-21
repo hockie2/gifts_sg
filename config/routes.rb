@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :items, :users, :comments
 
-  get '/items/:id/comments/new' => 'comments#new'
+  post '/items/:id/comments/new' => 'comments#create', as: 'add_comment'
   get "/items/:id/reserve" => 'items#reserve', as: 'reserved_item'
 
 end

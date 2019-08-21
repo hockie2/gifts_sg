@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
 	  def show
 	  	@item = Item.find(params[:id])
 
-      @reserve = Reserve.find{|x| x.item_id_id == params[:id].to_i}
+      @reserve = Reserve.find{|x| x.item_id == params[:id].to_i}
 
 
 	  	@categories = Category.all
@@ -44,12 +44,12 @@ class ItemsController < ApplicationController
 	  	@item = Item.new(item_params)
 
 	  	uploaded_file = params[:item][:picture].path
-     
+
   		cloudnary_file = Cloudinary::Uploader.upload(uploaded_file)
-  		
+
   		@item.public_id = cloudnary_file["public_id"]
       @item.user_id = current_user.id
-  	
+
 	    if @item.save
 	      redirect_to @item
 

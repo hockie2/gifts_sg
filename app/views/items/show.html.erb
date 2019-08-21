@@ -20,9 +20,8 @@
            <% end %>
 
           <p> posted by <%= @item.user.name %>
-          	<p><%= @reserve.user.email %></p>
-          	<% if @reserve.user_id_id.email == current_user.email%>
-	          	<%= form_with scope: :comment, url: comments_path, local: true do |form| %>
+          	<% if @reserve.user.email == current_user.email%>
+	          	<%= form_with scope: :comment, url: add_comment_path, local: true do |form| %>
 
 						  <p>
 						    <%= form.label :comment %><br>
