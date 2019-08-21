@@ -1,0 +1,13 @@
+<h1>new comment form</h1>
+
+<%= form_with scope: :comment, url: comments_path, local: true do |form| %>
+
+  <p>
+    <%= form.label :text %><br>
+    <%= form.text_area :text %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
