@@ -15,6 +15,10 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    @comment = Comment.find(params[:id])
+      if current_user
+          @users = User.find(current_user.id)
+      end
   end
 
   def create
@@ -23,18 +27,21 @@ class CommentsController < ApplicationController
 
     @comment.item_id = params[:id]
 
-    puts "logging comment"
-    puts params[:id].to_i
-
     if @comment.save
       redirect_to item_path
     end
   end
 
   def update
+    @comment = Comment.find(params[:id])
+    @comment.update(comment_params)
+    redirect_to items_path
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to items_path
   end
 
   private
