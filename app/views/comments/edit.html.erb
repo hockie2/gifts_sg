@@ -1,0 +1,17 @@
+<div class ='container'>
+
+<%= form_with scope: :comment, model: @comment, local: true do |form| %>
+
+  <p>
+      <%= form.label :comment %><br>
+      <%= form.text_area :comment %>
+  </p>
+
+  <p class="error">
+     <%= show_errors(@comment, :comment) %>
+  </p>
+
+    <%= form.submit %>
+
+<% end %>
+</div>
