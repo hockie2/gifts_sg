@@ -29,6 +29,9 @@ class ItemsController < ApplicationController
 	  def edit
 	  	@item = Item.find(params[:id])
 	  	@categories = Category.all
+        if current_user
+            @users = User.find(current_user.id)
+        end
 	  end
 
 	  def create
