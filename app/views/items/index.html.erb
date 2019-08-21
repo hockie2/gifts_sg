@@ -1,3 +1,5 @@
+<div id="background"></div>
+
 <div class="main_wrapper">
 
 <% @items.each do |item| %>
@@ -13,18 +15,18 @@
             <span id="description"><%= item.description %></span>
 
 
-            <div id="timestamp"><%= item.updated_at.strftime('%d %B, %l:%M%P') %></div>
+            <div id="timestamp"><%= item.updated_at.strftime('%d %B') %></div>
             <div class="bottom_wrapper">
-                <p>posted by  <a href = "/users/<%= item.user.id %>" ><%= item.user.name %></a></p>
+                <p id="username">posted by  <a href = "/users/<%= item.user.id %>" ><%= item.user.name %></a></p>
 
                     <% if user_signed_in? && current_user.email == item.user.email %>
 
-                        <div><%= link_to 'Show', item_path(item) %> | <%= link_to 'Edit', edit_item_path(item) %> | <%= link_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %>
+                        <div class="controls"><%= link_to 'Edit', edit_item_path(item) %> | <%= link_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %>
                         </div>
                     <% elsif user_signed_in? && current_user.email != item.user.email %>
                         <form method = 'PATCH' action ='/items/<%= item.id %>/reserve'><button class ="btn btn-info reserve"> Reserve </button></form>
                     <% else%>
-                         <div><%= link_to 'Show', item_path(item) %> | <%= link_to 'Edit', edit_item_path(item) %> | <%= link_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %>
+                         <div class="controls"><%= link_to 'Edit', edit_item_path(item) %> | <%= link_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %>
                         </div>
                     <% end %>
             </div>
