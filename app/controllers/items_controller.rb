@@ -63,11 +63,13 @@ class ItemsController < ApplicationController
 	  	@item = Item.find(params[:id])
 	    @item.availability = "reserved"
 	    if current_user
-         @users = User.find(current_user.id)
+         @user = User.find(current_user.id)
       	end
 	    @reserve = Reserve.new
+	    @reserve.item_id = @item.id
+	    @reserve.user_id = @user.id
 	     puts "+++++++++++++++"
-	     puts @reserve
+	     puts @reserve.id
 	    @reserve.save
 
 	    if @item.save
