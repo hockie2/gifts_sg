@@ -66,6 +66,8 @@ class ItemsController < ApplicationController
          @users = User.find(current_user.id)
       	end
 	    @reserve = Reserve.new
+	     puts "+++++++++++++++"
+	     puts @reserve
 	    @reserve.save
 
 	    if @item.save
