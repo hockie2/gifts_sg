@@ -1,0 +1,14 @@
+<div class="container">
+
+<h1>Users Items</h1>
+
+  <% @items.each do |item| %>
+  		<div>
+      <%= item.name %>
+      <%= item.category %>
+      <%= item.description %>
+      <%= item.preloved%>
+    </div>
+        <% end %>
+
+</div>
