@@ -47,7 +47,7 @@ class ItemsController < ApplicationController
 
 	    end
 	  end
-	 
+
 
 	  def update
 	  	@item = Item.find(params[:id])
