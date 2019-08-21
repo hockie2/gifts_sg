@@ -21,17 +21,17 @@
 
           <p> posted by <%= @item.user.name %>
 
-				<div>
-          <h5>Comments:</h5>
-          <div>
-          	<% @comments.each do |comment| %>
-          		<h6><%= comment.comment %></h6>
-          		<p>Posted by: <%= comment.user.name%></p>
-          		<p><%= comment.updated_at.strftime('%d %B')%></p>
-          	<% end %>
-          </div>
-
-          </div>
+          <% if @comments.length > 0 %>
+						<div>
+							<h5>Comments:</h5>
+          		<% @comments.each do |comment| %>
+          			<h6><%= comment.comment %></h6>
+          			<p>Posted by: <%= comment.user.name%></p>
+          			<p><%= comment.updated_at.strftime('%d %B')%></p>
+          		<% end %>
+        		</div>
+          <% else %>
+          <% end %>
 
           <div>
           	<% if @reserve != nil && @reserve.user.email == current_user.email%>

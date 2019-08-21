@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
 
 	  	@categories = Category.all
 
-      @comments = Comment.all{|x| x.item_id == params[:id].to_i}
+      @comments = Comment.where(item_id: params[:id].to_i).all
 
         if current_user
             @users = User.find(current_user.id)
