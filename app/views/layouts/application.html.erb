@@ -42,9 +42,10 @@
     </ul>
 </div>
 
-    <div class="d-flex justify-content-end col-3" >
+    <div class="d-flex justify-content-end col-4" >
         <ul class="navbar-nav  d-flex flex-row ">
             <% if user_signed_in? %>
+                <a href="/users/<%= @users.id %>" class="nav-link">My Dashboard</a>
                 <li class="nav-link"><%= image_tag("login.png", size: "15x15", class:"")%>&nbsp;&nbsp;Hello, <%= @users.name %> &nbsp;&nbsp; </li>
             <% end %>
             <li class="nav-item d-flex flex-row">
@@ -63,6 +64,6 @@
 
     <%= yield %>
 
-    <div id="footer">hssdsdhs</div>
+    <div id="footer">© Gifts.SG</div>
   </body>
 </html>
