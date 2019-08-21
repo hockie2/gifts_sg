@@ -26,6 +26,7 @@
     justify-content: center;
     flex-direction:row;
     background-color: white;
+    box-shadow: 5px 5px 18px #247c7a;
 }
 
 #items_left{
@@ -34,6 +35,7 @@
     img{
         width:100%;
         height: 100%;
+        object-fit:cover;
         border-top-left-radius: 20px;
         border-bottom-left-radius: 20px;
     }
@@ -44,4 +46,11 @@
     width:60%;
     border:1px solid purple;
     padding:20px
+}
+
+
+#items_name{
+    // border:1px red solid;
+    font-weight: bold;
+    font-size: 20px
 }

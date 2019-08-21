@@ -14,6 +14,10 @@ class ItemsController < ApplicationController
 
 	  	@categories = Category.all
 
+        if current_user
+            @users = User.find(current_user.id)
+        end
+
 	  end
 
 	  def new
@@ -47,7 +51,7 @@ class ItemsController < ApplicationController
 
 	    end
 	  end
-	 
+
 
 	  def update
 	  	@item = Item.find(params[:id])
