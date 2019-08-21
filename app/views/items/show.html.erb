@@ -1,28 +1,27 @@
-<div class ='container'>
+<div id ='items_main_wrapper'>
+
+    <div id="items_inner_wrapper">
+        <div id="items_left">
+            <%= cl_image_tag(@item.public_id) %>
+        </div>
+        <div id="items_right">
+           <p>Category</p>
+           <%= @item.category %>
+
+           <p>Name </p>
+           <%= @item.name %>
 
 
-  <p>Category</p>
+           <p>Description</p>
+           <%= @item.description %>
 
-    <%= @item.category %>
-
-  <p>Name </p>
-
-
-  <p>Photos</p>
-
-      <%= cl_image_tag(@item.public_id) %>
-
-
-  <p>Description</p>
-
-  <%= @item.description %>
-
-
-  <% if @item.preloved? %>
-    <p> Preloved</p>
-  <% else %>
-    <p> New </p>
-  <% end %>
-
-  <p> posted by <%= @item.user.name %>
- </div>
+           <% if @item.preloved? %>
+            <p> Preloved</p>
+           <% else %>
+            <p> New </p>
+           <% end %>
+          
+          <p> posted by <%= @item.user.name %>
+       </div>
+   </div>
+</div>
