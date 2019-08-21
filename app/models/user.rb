@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :item
+  has_many :comment
   has_many :reserve
 
   # Include default devise modules. Others available are:

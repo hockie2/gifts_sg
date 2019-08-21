@@ -12,7 +12,11 @@ class ItemsController < ApplicationController
 	  def show
 	  	@item = Item.find(params[:id])
 
+      @reserve = Reserve.find{|x| x.item_id == params[:id].to_i}
+
 	  	@categories = Category.all
+
+      @comments = Comment.where(item_id: params[:id].to_i).all
 
         if current_user
             @users = User.find(current_user.id)
@@ -23,9 +27,11 @@ class ItemsController < ApplicationController
 	  def new
 
 	  	@categories = Category.all
-        if current_user
-             @users = User.find(current_user.id)
-          end
+
+      if current_user
+            @users = User.find(current_user.id)
+        end
+
 
 	  end
 
@@ -102,4 +108,3 @@ class ItemsController < ApplicationController
 
 
 end
-
