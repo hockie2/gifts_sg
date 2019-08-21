@@ -20,8 +20,11 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
-    #how to get item id?
-    @comment.item_id = 1
+
+    @comment.item_id = params[:id]
+
+    puts "logging comment"
+    puts params[:id].to_i
 
     @comment.save
     redirect_to @comment

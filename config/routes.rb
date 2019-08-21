@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   devise_for :users
   resources :items, :users, :comments
 
+  get '/items/:id/comments/new' => 'comments#new'
 
 end

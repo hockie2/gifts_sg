@@ -12,6 +12,9 @@ class ItemsController < ApplicationController
 	  def show
 	  	@item = Item.find(params[:id])
 
+      @reserve = Reserve.find{|x| x.item_id_id == params[:id].to_i}
+
+
 	  	@categories = Category.all
 
         if current_user
