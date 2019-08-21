@@ -22,8 +22,6 @@
         <%= image_tag("logo_01.png", class:"logo")%>
     </div>
 
-    <button type="button" class="giftaway_button">Gift Away!</button>
-
     <div class="col-4 " id="">
         <form class="form-inline ">
           <input class="form-control col-9 mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -47,6 +45,7 @@
     <div class="d-flex justify-content-end col-4" >
         <ul class="navbar-nav  d-flex flex-row ">
             <% if user_signed_in? %>
+                <%= button_to "GiftAway!", new_item_path, :method => "get", class:"btn btn-warning" %>
                 <a href="/users/<%= @users.id %>" class="nav-link">My Dashboard</a>
                 <li class="nav-link"><%= image_tag("login.png", size: "15x15", class:"")%>&nbsp;&nbsp;Hello, <%= @users.name %> &nbsp;&nbsp; </li>
             <% end %>

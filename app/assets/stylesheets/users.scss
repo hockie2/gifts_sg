@@ -79,7 +79,8 @@ label{
 }
 
 #user_inner_wrapper{
-    width:80%;
+    width:88%;
+    height:auto;
     // border:1px solid purple;
     border-radius: 20px;
     display: flex;
@@ -99,5 +100,6 @@ label{
     // border:1px solid purple;
     display: flex;
     flex-wrap:wrap;
+    // justify-content:center;
 }
 
