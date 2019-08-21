@@ -23,6 +23,9 @@ class ItemsController < ApplicationController
 	  def new
 
 	  	@categories = Category.all
+      if current_user
+            @users = User.find(current_user.id)
+        end
 
 	  end
 
@@ -75,4 +78,3 @@ class ItemsController < ApplicationController
 
 
 end
-
