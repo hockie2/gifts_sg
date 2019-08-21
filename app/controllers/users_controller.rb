@@ -25,9 +25,13 @@ before_action :authenticate_user!, :except => [ :show, :index ]
     puts params[:id]
     @items = Item.select{|item| item.user_id == params[:id].to_i}
 
-    # @user = User.find(params[:id])
-    # @items = Item.all{|item| item.user_id = params[:id]}
-    puts @items.inspect
+    if current_user 
+            @users = User.find(current_user.id)
+           
+           
+        end
+    puts "============================="
+    puts @users.inspect
   end
 
   def edit

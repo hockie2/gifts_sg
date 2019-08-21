@@ -1,3 +1,64 @@
 // Place all the styles related to the Items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#background{
+    width:100%;
+    height: 500px;
+    // border: 1px red solid
+}
+
+
+#items_main_wrapper{
+    width:100%;
+    height:700px;
+    // border:1px solid red;
+    display: flex;
+    justify-content: center;
+    flex-direction:row;
+    padding:30px;
+    color:#676666;
+}
+
+#items_inner_wrapper{
+    width:80%;
+    // border:1px solid purple;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction:row;
+    background-color: white;
+    box-shadow: 5px 5px 18px #247c7a;
+}
+
+#items_left{
+    width:40%;
+
+    img{
+        width:100%;
+        height: 100%;
+        object-fit:cover;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+    }
+
+}
+
+#items_right{
+    width:60%;
+    // border:1px solid purple;
+    padding:20px
+}
+
+
+#items_name{
+    // border:1px red solid;
+    font-weight: bold;
+    font-size: 20px
+}
+
+#item_show_username{
+    font-size: 14px;
+    a{
+        color:grey;
+    }
+}

@@ -1,0 +1,103 @@
+#form_top_wrapper{
+    // border:1px solid red;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin:50px auto;
+
+}
+
+#form_wrapper{
+    // border:1px solid blue;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    width:60%;
+    height:550px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: 5px 5px 18px #247c7a;
+}
+
+#form_left{
+    width:40%;
+    height:100%;
+    background-image: url('https://gaijinpot.scdn3.secure.raxcdn.com/app/uploads/sites/4/2015/08/clothes-1024x683.jpg');
+    background-size: cover;
+    background-position:center;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+#form_login_left{
+    width:40%;
+    height:100%;
+    background-image: url('http://www.qualratio.com/wp-content/uploads/2018/05/banner_home_appliances-1.jpg');
+    background-size: cover;
+    background-position:center;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+
+#form_right{
+    width:60%;
+    height:100%;
+    padding: 10px 20px;
+
+}
+
+.field input{
+        width:95%;
+        border: 1px solid #d3d3d3;
+        margin:0
+}
+
+label{
+    margin:5px 0 0 0;
+    // border: 1px solid red;
+    padding: 0
+}
+
+#remember{
+    // border:1px red solid;
+    #user_remember_me{
+        width:30px;
+    }
+
+}
+
+
+.actions input{
+    width:150px;
+    height:40px;
+    background-color: #31c2c3;
+    border: none;
+    margin:20px auto;
+    color:white;
+}
+
+#user_inner_wrapper{
+    width:80%;
+    // border:1px solid purple;
+    border-radius: 20px;
+    display: flex;
+    flex-direction:column;
+    // justify-content: center;
+    // flex-wrap:wrap;
+    background-color: white;
+    box-shadow: 5px 5px 18px #247c7a;
+}
+
+#user_top_wrapper{
+    // border:1px solid purple;
+    padding: 10px 10px 0 10px;
+}
+
+#user_bottom_wrapper{
+    // border:1px solid purple;
+    display: flex;
+    flex-wrap:wrap;
+}
+

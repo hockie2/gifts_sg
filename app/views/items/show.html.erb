@@ -1,28 +1,67 @@
-<div class ='container'>
+<div id ='items_main_wrapper'>
+
+    <div id="items_inner_wrapper">
+        <div id="items_left">
+            <%= cl_image_tag(@item.public_id) %>
+        </div>
+        <div id="items_right">
+           <p>Category > <%= @item.category %></p>
+
+           <p id="items_name"><%= @item.name %><p>
+
+           <p id="items_description"><%= @item.description %></p>
+
+<<<<<<< HEAD
+            <p> Condition:</p>
+           <% if @item.preloved == true %>
+                <p> Preloved </p>
+           <% else %>
+                <p> New </p>
+           <% end %>
+
+          <p id="item_show_username"> posted by <a href = "/users/<%= @item.user.id %>" ><%= @item.user.name %></a></p>
+
+          <% if @comments.length > 0 %>
+						<div>
+							<h5>Comments:</h5>
+          		<% @comments.each do |comment| %>
+          			<h6><%= comment.comment %></h6>
+          			<p>Posted by: <%= comment.user.name%></p>
+          			<p><%= comment.updated_at.strftime('%d %B')%></p>
+
+								<% if comment.user.email == current_user.email%>
+										<div>
+											<div class="controls"><%= link_to 'Edit', edit_comment_path(comment) %> | <%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'Are you sure you want to delete this comment?' } %>
+										</div>
+									<% else %>
+									<% end %>
+
+								<% end %>
+							</div>
+							<% else %>
+							<% end %>
 
 
-  <p>Category</p>
 
-    <%= @item.category %>
+          <div>
+          	<% if @reserve != nil && @reserve.user.email == current_user.email%>
+		          	<%= form_with scope: :comment, url: add_comment_path, local: true do |form| %>
 
-  <p>Name </p>
+							  <p>
+							    <%= form.label :post_your_comment %><br>
+							    <%= form.text_area :comment %>
+							  </p>
+
+							  <p>
+							    <%= form.submit %>
+							  </p>
+								<% end %>
+						<% else%>
+					<% end %>
+				</div>
 
 
-  <p>Photos</p>
 
-      <%= cl_image_tag(@item.public_id) %>
-
-
-  <p>Description</p>
-
-  <%= @item.description %>
-
-
-  <% if @item.preloved? %>
-    <p> Preloved</p>
-  <% else %>
-    <p> New </p>
-  <% end %>
-
-  <p> posted by <%= @item.user.name %>
- </div>
+       </div>
+   </div>
+</div>
