@@ -1,14 +1,36 @@
-<div class="container">
+<div id ='items_main_wrapper'>
 
-<h1>Users Items</h1>
+    <div id="user_inner_wrapper">
+        <div id="user_top_wrapper">
+            <h2>MY LISTINGS</h2>
+        </div>
+        <div id="user_bottom_wrapper">
+        <% @items.each do |item| %>
+      		<div class="post_wrapper">
+                <div class="top_wrapper d-flex align-items-center d-flex justify-content-between">
+                    <span class="title"><div id="profile_pic"></div><%= item.name %></span>
+                </div>
+                <div id="photo"><%= link_to item_path(item) do %><%= cl_image_tag(item.public_id) %><% end %></div>
+                <div class="description_wrapper">
+                    <div id="description"><%= item.description.truncate_words(10) %></div>
 
-  <% @items.each do |item| %>
-  		<div>
-      <%= item.name %>
-      <%= item.category %>
-      <%= item.description %>
-      <%= item.preloved%>
-    </div>
+                    <div id="timestamp"><%= item.updated_at.strftime('%d %B') %></div>
+                    <div class="bottom_wrapper">
+                        <p id="username">posted by <a href = "/users/<%= item.user.id %>" ><%= item.user.name %></a></p>
+
+                            <% if user_signed_in? && current_user.email == item.user.email %>
+
+                                <div class="controls"><%= link_to 'Edit', edit_item_path(item) %> | <%= link_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %>
+                                </div>
+                            <% elsif user_signed_in? && current_user.email != item.user.email %>
+                                <form method = 'PATCH' action ='/items/<%= item.id %>/reserve'><button class ="btn btn-info reserve"> Reserve </button></form>
+                            <% else%>
+
+                            <% end %>
+                    </div>
+                </div>
+            </div>
         <% end %>
-
+    </div>
+    </div>
 </div>

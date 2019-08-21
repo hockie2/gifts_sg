@@ -5,21 +5,22 @@
             <%= cl_image_tag(@item.public_id) %>
         </div>
         <div id="items_right">
-           <p>Category</p>
-           <%= @item.category %>
+           <p>Category > <%= @item.category %></p>
 
            <p id="items_name"><%= @item.name %><p>
 
            <p id="items_description"><%= @item.description %></p>
 
-            <p> Condition:</p>
-           <% if @item.preloved == true %>
-                <p> Preloved </p>
-           <% else %>
-                <p> New </p>
-           <% end %>
-
-          <p> posted by <%= @item.user.name %>
+           <div>
+                <p> Condition:
+                   <% if @item.preloved == true %>
+                        Preloved
+                   <% else %>
+                        New
+                   <% end %>
+                </p>
+           </div>
+          <p id="item_show_username"> posted by <a href = "/users/<%= @item.user.id %>" ><%= @item.user.name %></a></p>
        </div>
    </div>
 </div>

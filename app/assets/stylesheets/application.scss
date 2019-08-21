@@ -79,6 +79,8 @@ h2{
     width:100%;
     height:50px;
     margin:0;
+    padding: 10px;
+    color: white;
 }
 
 /*---CARD STARTS-----------------------*/
@@ -127,7 +129,14 @@ h2{
 .description_wrapper{
     padding: 0 10px;
     // border:1px red solid
+
 }
+    #description{
+        margin: 10px auto;
+         line-height:1.2;
+         font-size:15px;
+
+    }
 
 
 #timestamp{
@@ -142,9 +151,17 @@ h2{
     }
 }
 
+// .bottom_wrapper{
+//     border:1px solid purple
+// }
+
+
 .controls{
     font-size:12px;
     margin-bottom:10px;
+    // border:1px red solid;
+    // position: absolute;
+    bottom: 0;
     float:right;
     a{
         color:grey;
