@@ -8,17 +8,18 @@
            <p>Category</p>
            <%= @item.category %>
 
-           <p>Name </p>
-           <%= @item.name %>
+
+           <p id="items_name"><%= @item.name %><p>
 
 
-           <p>Description</p>
-           <%= @item.description %>
+           <p id="items_description"><%= @item.description %></p>
 
-           <% if @item.preloved? %>
-            <p> Preloved</p>
+
+            <p> Condition:</p>
+           <% if @item.preloved == true %>
+                <p> Preloved </p>
            <% else %>
-            <p> New </p>
+                <p> New </p>
            <% end %>
        </div>
    </div>
