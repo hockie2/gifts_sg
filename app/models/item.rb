@@ -1,7 +1,8 @@
 class Item < ApplicationRecord
 	belongs_to :category
-  belongs_to :user
-  has_one :reserve
+  	belongs_to :user
+  	has_one :reserve
+
 
   validates :name, presence: true, length: { minimum: 3, maximum: 20 }
   validates :category, presence: true
