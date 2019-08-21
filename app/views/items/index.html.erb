@@ -26,8 +26,7 @@
                     <% elsif user_signed_in? && current_user.email != item.user.email %>
                         <form method = 'PATCH' action ='/items/<%= item.id %>/reserve'><button class ="btn btn-info reserve"> Reserve </button></form>
                     <% else%>
-                         <div class="controls"><%= link_to 'Edit', edit_item_path(item) %> | <%= link_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %>
-                        </div>
+                         
                     <% end %>
             </div>
 
