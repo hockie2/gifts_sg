@@ -1,3 +1,5 @@
+<div id="background"></div>
+
 <div class="main_wrapper">
 
 <% @items.each do |item| %>
@@ -10,11 +12,17 @@
         <div id="photo"><%= link_to item_path(item) do %><%= cl_image_tag(item.public_id) %><% end %></div>
         <div class="description_wrapper">
             <span id="description"><%= item.description %></span>
-        <div id="timestamp"><%= item.updated_at.strftime('%d %B, %l:%M%P') %></div>
-        <div class="bottom_wrapper">
-            <div><%= link_to 'Edit', edit_item_path(item) %> | <%= link_to 'Destroy', item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <div id="timestamp"><%= item.updated_at.strftime('%d %B, %l:%M%P') %></div>
+            <div class="bottom_wrapper">
+
+                <%= link_to 'Show', item_path(item) %>
+                <% if user_signed_in? %>
+                   <div>
+                    <%= link_to 'Edit', edit_item_path(item) %> | <%= link_to 'Destroy', item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %>
+                   </div>
+                <% end %>
+
             </div>
-        </div>
         </div>
   </div>
 <% end %>
