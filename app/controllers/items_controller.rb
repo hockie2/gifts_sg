@@ -2,11 +2,7 @@ class ItemsController < ApplicationController
 	  	before_action :authenticate_user!, :except => [ :show, :index ]
 
       def index
-        @items = if params[:term]
-          Item.where('name Like?', "%#{params[:term]}%")
-        else
-          Item.all.sort
-        end
+        @items = Item.search(params[:term])
 
           if current_user
              @users = User.find(current_user.id)
