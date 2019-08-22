@@ -27,8 +27,8 @@
     		<div class="search">
     			<form class="form-inline ">
 	    			<%= form_tag(items_path, method: :get) do %>
-	    				<%= text_field_tag :term %>
-	    				<%= submit_tag 'Search', name: nil %>
+	    				<%= text_field_tag :term,"", placeholder:"Search", class:"form-control col-9 mr-sm-2" %>
+	    				<%= submit_tag 'Search', name: nil , class:"btn btn-info my-2 my-sm-0"%>
 	    			<% end %>
       		</form>
     		</div>
