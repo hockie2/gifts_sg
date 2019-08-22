@@ -2,7 +2,7 @@
 
     <div id="user_inner_wrapper">
         <div id="user_top_wrapper">
-            <% if current_user.id == @user.id %>
+            <% if current_user && current_user.id == @user.id %>
                 <h2>MY LISTINGS</h2>
             <% else %>
                 <h2><%= @user.name %> 's LISTINGS</h2>
@@ -48,15 +48,17 @@
                              <form method = 'PATCH' action ='/items/<%= item.id %>/release'><button class ="btn btn-info reserve"> Release </button></form>
 
                     <% else%>
+                        
 
-                            <% end %>
+                        <% end %>
                     </div>
                 </div>
             </div>
         <% end %>
     </div>
-<<<<<<< HEAD
+<% if current_user && current_user.id? == @user.id %>
     <hr class="dashboard_line">
+    
     <div>
         <div id="user_top_wrapper">
             <h2>MY RESERVED ITEMS</h2>
@@ -84,8 +86,6 @@
                                <% elsif user_signed_in? && current_user.email != item.user.email &&  current_user.reserve.length > 0 && current_user.id == item.reserve.user_id%>
                          <form method = 'PATCH' action ='/items/<%= item.id %>/release'><button class ="reserved_btn btn btn-info reserve"> Release </button></form>
 
-
-
                                 <% end %>
                         </div>
                     </div>
@@ -94,23 +94,7 @@
         <% end %>
         </div>
     </div>
-  </div>
-=======
-    
-    <% if current_user.id == @user.id && @myReservedItems.length > 0 %>
-        <h2>MY RESERVED ITEMS</h2>
-        <% @myReservedItems.each do |item| %>
-        <%= item.name %>
-        <%= link_to item_path(item) do %><%= cl_image_tag(item.public_id) %><% end %>
-        <%= item.description.truncate_words(10) %>
-        <%= item.updated_at.strftime('%d %B') %>
-        <p id="username2">posted by <a href = "/users/<%= item.user.id %>" ><%= item.user.name %></a></p>
-        <form method = 'PATCH' action ='/items/<%= item.id %>/release'><button class ="btn btn-info reserve"> Release </button></form>
-        <% end %>
-                      
     <% end %>
-    
   </div>
 
->>>>>>> listing
 </div>

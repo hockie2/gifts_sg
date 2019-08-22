@@ -4,10 +4,12 @@ class ItemsController < ApplicationController
       def index
         @search = true
         @items_search = Item.search(params[:term])
+        @items = Item.select{|item| item.availability != 'closed'}.sort
+
         if current_user
 	        @users = User.find(current_user.id)
-	        @items = Item.select{|item| item.availability != 'closed'}.sort
-           
+            # @items = Item.select{|item| item.availability != 'closed'}.sort
+
         end
 
 	  end

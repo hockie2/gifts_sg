@@ -2,11 +2,9 @@
 
 <div class="main_wrapper">
 
-<% for item in @items %>
+    <% for item in @items %>
 
     <div class="post_wrapper">
-
-
         <div class="top_wrapper d-flex align-items-center d-flex justify-content-between">
             <span class="title"><div id="profile_pic"></div><%= item.name %></span>
 
@@ -23,57 +21,44 @@
             <div id="timestamp"><%= item.updated_at.strftime('%d %B') %></div>
         
             <div class="bottom_wrapper">
-<<<<<<< HEAD
-                <p id="username">posted by  <a href = "/users/<%= item.user.id %>" ><%= item.user.name %></a></p>
-                    <% if user_signed_in? && current_user.email == item.user.email && item.availability == "Available"%>
-                        <div class="controls"><%= link_to 'Edit', edit_item_path(item) %> | <%= link_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %>
-
-                        </div>
-
-                    <% elsif user_signed_in? && current_user.email == item.user.email && item.availability == "reserved"%>
-                        <div class="controls">
-                            <%= link_to 'Edit', edit_item_path(item) %> | <%= link_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %>
-                        </div>
-
-                        <form method = 'PATCH' action = '/items/<%= item.id %>/done' ><button class ="reserved_btn btn btn-info"> Done</button></form>
-
-
-                    <% elsif user_signed_in? && current_user.email != item.user.email && item.availability == "Available" %>
-                        <form method = 'PATCH' action ='/items/<%= item.id %>/reserve'><button class ="reserved_btn btn btn-info reserve"> Reserve </button></form>
-
-                    <% elsif user_signed_in? && current_user.email != item.user.email &&  current_user.reserve.length > 0 && current_user.id == item.reserve.user_id%>
-                         <form method = 'PATCH' action ='/items/<%= item.id %>/release'><button class ="reserved_btn btn btn-info reserve"> Release </button></form>
-=======
 
 
                 <% if user_signed_in? && current_user.email == item.user.email && item.availability == "Available"%>
-                <p id="username">posted by  <a href = "/users/<%= item.user.id %>" >Me</a></p>
+                    <p id="username">posted by  <a href = "/users/<%= item.user.id %>" >Me</a></p>
                     <div class="controls"><%= link_to 'Edit', edit_item_path(item) %> | <%= link_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %>
                         
                     </div>
 
                 <% elsif user_signed_in? && current_user.email == item.user.email && item.availability == "reserved"%>
-                <p id="username">posted by  <a href = "/users/<%= item.user.id %>" >Me</a></p>
-                    <div class="controls"> <%= link_to 'Edit', edit_item_path(item) %> | <%= link_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %>
-                        <form method = 'PATCH' action = '/items/<%= item.id %>/done' ><button class ="btn btn-info "> Done</button></form>
+                     <p id="username">posted by  <a href = "/users/<%= item.user.id %>" >Me</a></p>
+                    <div class="controls">
+                         <%= link_to 'Edit', edit_item_path(item) %> | <%= link_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %>
+                        <p><form method = 'PATCH' action = '/items/<%= item.id %>/done' ><button class ="btn btn-info "> Done</button></form></p>
                     </div>
->>>>>>> listing
 
                 <% elsif user_signed_in? && current_user.email != item.user.email && item.availability == "Available" %>
-                <p id="username">posted by  <a href = "/users/<%= item.user.id %>" ><%= item.user.name %></a></p>
+                    <p id="username">posted by  <a href = "/users/<%= item.user.id %>" ><%= item.user.name %></a></p>
+                     <div class="controls">
                     <form method = 'PATCH' action ='/items/<%= item.id %>/reserve'><button class ="btn btn-info reserve"> Reserve </button></form>
+                    </div>
+                <% elsif user_signed_in? && current_user.email != item.user.email &&  current_user.reserve.length > 0 && item.availability == "reserved" && current_user.id == item.reserve.user_id %>
 
-                <% elsif user_signed_in? && current_user.email != item.user.email &&  current_user.reserve.length > 0 && item.availability == "reserved" && current_user.id == item.reserve.id %>
-                <p id="username">posted by  <a href = "/users/<%= item.user.id %>" ><%= item.user.name %></a></p>
-                
+
+             
+                    <p id="username">posted by  <a href = "/users/<%= item.user.id %>" ><%= item.user.name %></a></p>
+                    <div class="controls">
                      <form method = 'PATCH' action ='/items/<%= item.id %>/release'><button class ="btn btn-info reserve"> Release </button></form>
+                    </div>
                 <% else %>
+                    <p id="username">posted by  <a href = "/users/<%= item.user.id %>" ><%= item.user.name %></a></p>
+
                 <% end %>
             </div>
 
         </div>
     </div>
 <% end %>
+
 </div>
 
 
