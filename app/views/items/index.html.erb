@@ -13,6 +13,8 @@
         <div id="photo"><%= link_to item_path(item) do %><%= cl_image_tag(item.public_id) %><% end %>
             <% if item.availability == 'reserved' %>
                 <div id="reserved">RESERVED</div>
+            <% elsif item.availability == 'closed' %>
+                <div id="reserved">CLOSED</div>
             <% end %>
        </div>
         <div class="description_wrapper">

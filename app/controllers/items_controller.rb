@@ -114,7 +114,7 @@ class ItemsController < ApplicationController
       	end
 	    @reserve = @item.reserve
 	    @reserve.destroy
-	    @item.availability = "Closed"
+	    @item.availability = "closed"
 	   	if @item.save
 	    	redirect_to items_path
 	    end

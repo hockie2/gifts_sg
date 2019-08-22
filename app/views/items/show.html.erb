@@ -1,5 +1,4 @@
 <div id ='items_main_wrapper'>
-
     <div id="items_inner_wrapper">
         <div id="items_left">
             <%= cl_image_tag(@item.public_id) %>
@@ -18,7 +17,6 @@
                   <span>New</span>
                <% end %>
            </p>
-
           <p id="item_show_username"> posted by <a href = "/users/<%= @item.user.id %>" ><%= @item.user.name %></a></p>
 
           <% if @comments.length > 0 %>
@@ -41,8 +39,6 @@
 							<% else %>
 							<% end %>
 
-
-
           <div>
           	<% if @reserve != nil && @reserve.user.email == current_user.email%>
 		          	<%= form_with scope: :comment, url: add_comment_path, local: true do |form| %>
@@ -59,9 +55,6 @@
 						<% else%>
 					<% end %>
 				</div>
-
-
-
        </div>
    </div>
 </div>

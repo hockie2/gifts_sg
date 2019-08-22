@@ -2,7 +2,11 @@
 
     <div id="user_inner_wrapper">
         <div id="user_top_wrapper">
-            <h2>MY LISTINGS</h2>
+            <% if current_user.id == @user.id %>
+                <h2>MY LISTINGS</h2>
+            <% else %>
+                <h2><%= @user.name %> 's LISTINGS</h2>
+            <% end %>
         </div>
         <div id="user_bottom_wrapper">
         <% @items.each do |item| %>
@@ -16,7 +20,7 @@
 
                     <div id="timestamp"><%= item.updated_at.strftime('%d %B') %></div>
                     <div class="bottom_wrapper">
-                        <p id="username">posted by <a href = "/users/<%= item.user.id %>" ><%= item.user.name %></a></p>
+                        <p id="username">posted by Me</p>
 
                             <% if user_signed_in? && current_user.email == item.user.email %>
 
@@ -33,36 +37,19 @@
         <% end %>
     </div>
     
-
-
-
-    
-    <h2>MY RESERVED ITEMS</h2>
-    <% if @myReservedItems.length > 0 %>
+    <% if current_user.id == @user.id && @myReservedItems.length > 0 %>
+        <h2>MY RESERVED ITEMS</h2>
         <% @myReservedItems.each do |item| %>
-        
         <%= item.name %>
         <%= link_to item_path(item) do %><%= cl_image_tag(item.public_id) %><% end %>
         <%= item.description.truncate_words(10) %>
-
         <%= item.updated_at.strftime('%d %B') %>
-                   
         <p id="username2">posted by <a href = "/users/<%= item.user.id %>" ><%= item.user.name %></a></p>
-
-        <% if user_signed_in? && current_user.email == item.user.email %>
-
-        <%= link_to 'Edit', edit_item_path(item) %> | <%= link_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %>
-                               
-        <% elsif user_signed_in? && current_user.email != item.user.email %>
-        <form method = 'PATCH' action ='/items/<%= item.id %>/reserve'><button class ="btn btn-info reserve"> Reserve </button></form>
-        <% else%>
+        <form method = 'PATCH' action ='/items/<%= item.id %>/release'><button class ="btn btn-info reserve"> Release </button></form>
         <% end %>
                       
-        <% end %>
-
     <% end %>
+    
   </div>
-  
-
 
 </div>
