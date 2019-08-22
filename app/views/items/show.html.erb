@@ -36,7 +36,7 @@
                 <%= link_to 'Edit', edit_item_path(@item) %> | <%= link_to 'Delete', item_path(@item), method: :delete, data: { confirm: 'Are you sure?' } %>
             </div>
 
-            <form method = 'PATCH' action = '/items/<%= @item.id %>/done' ><button class ="item_reserved_btn btn btn-info"> Done</button></form>
+            <form method = 'PATCH' action = '/items/<%= @item.id %>/done' ><button class ="item_reserved_btn btn btn-danger"> Done</button></form>
 
 
         <% elsif user_signed_in? && current_user.email != @item.user.email && @item.availability == "Available" %>
