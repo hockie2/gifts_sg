@@ -44,6 +44,12 @@ class ItemsController < ApplicationController
 	  	@item = Item.new(item_params)
 	  	uploaded_file = params[:item][:picture].path
 
+	  	# if params[:preloved] == 'true'
+	  	# 	@item.preloved = true
+	  	# else
+	  	# 	@item.preloved = false
+	  	# end
+
   		cloudnary_file = Cloudinary::Uploader.upload(uploaded_file)
 
   		@item.public_id = cloudnary_file["public_id"]
@@ -54,6 +60,7 @@ class ItemsController < ApplicationController
 	      redirect_to @item
 	    else
 	    	@categories = Category.all
+	    	@users = User.find(current_user.id)
 	      	render 'new'
 	    end
 	  end
@@ -122,7 +129,7 @@ class ItemsController < ApplicationController
 	private
 
 	  def item_params
-	    params.require(:item).permit(:name, :description, :preloved, :availability, :public_id,  :category_id)
+	    params.require(:item).permit(:name, :description, :availability, :preloved, :public_id, :category_id)
 	  end
 
 
