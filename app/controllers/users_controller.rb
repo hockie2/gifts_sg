@@ -27,8 +27,7 @@ before_action :authenticate_user!, :except => [ :show, :index ]
 
     @user = User.find(params[:id])
     @reservedItems = Reserve.select{|item| item.user_id == params[:id].to_i}
-    @myReservedItems = @reservedItems.map{|e| e.item}
-   
+    @myReservedItems = @reservedItems.map{|e| e.item}.sort_by {|item| item.availability}.reverse
     if current_user 
       @users = User.find(current_user.id)
          
