@@ -3,11 +3,12 @@ class ItemsController < ApplicationController
 
       def index
         @search = true
-        @items = Item.search(params[:term])
-
-          if current_user
-             @users = User.find(current_user.id)
-          end
+        @items_search = Item.search(params[:term])
+        if current_user
+	        @users = User.find(current_user.id)
+	        @items = Item.select{|item| item.availability != 'closed'}.sort
+           
+        end
 
 	  end
 
@@ -43,10 +44,16 @@ class ItemsController < ApplicationController
 	  	@item = Item.new(item_params)
 	  	uploaded_file = params[:item][:picture].path
 
+	  	# if params[:preloved] == 'true'
+	  	# 	@item.preloved = true
+	  	# else
+	  	# 	@item.preloved = false
+	  	# end
+
   		cloudnary_file = Cloudinary::Uploader.upload(uploaded_file)
 
   		@item.public_id = cloudnary_file["public_id"]
-      @item.user_id = current_user.id
+        @item.user_id = current_user.id
 
 
 	    if @item.save
@@ -55,6 +62,7 @@ class ItemsController < ApplicationController
         puts @item.inspect
 	    else
 	    	@categories = Category.all
+	    	@users = User.find(current_user.id)
 	      	render 'new'
 	    end
 	  end
@@ -94,8 +102,10 @@ class ItemsController < ApplicationController
 	    if current_user
          @user = User.find(current_user.id)
       	end
+      	
 	    @reserve = @item.reserve
 	    @reserve.destroy
+		
 	   	if @item.save
 	    	redirect_to items_path
 	    end
@@ -106,9 +116,9 @@ class ItemsController < ApplicationController
 	    if current_user
          @user = User.find(current_user.id)
       	end
-	    @reserve = @item.reserve
-	    @reserve.destroy
-	    @item.availability = "Closed"
+	    # @reserve = @item.reserve
+	    # @reserve.destroy
+	    @item.availability = "closed"
 	   	if @item.save
 	    	redirect_to items_path
 	    end
@@ -125,7 +135,6 @@ class ItemsController < ApplicationController
 	  def item_params
 	    params.require(:item).permit(:name, :description, :preloved, :availability, :public_id, :category_id, :term)
 	  end
-
 
 
 end

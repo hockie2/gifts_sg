@@ -1,5 +1,4 @@
 <div id ='items_main_wrapper'>
-
     <div id="items_inner_wrapper">
         <div id="items_left">
             <%= cl_image_tag(@item.public_id) %>
@@ -18,24 +17,35 @@
                   <span>New</span>
                <% end %>
            </p>
+<<<<<<< HEAD
 
           <p id="item_show_username"> posted by <a href = "/users/<%= @item.user.id %>" ><%= @item.user.name %></a>, <%= @item.created_at.strftime('%d %B')%></p>
+=======
+          <p id="item_show_username"> posted by <a href = "/users/<%= @item.user.id %>" ><%= @item.user.name %></a></p>
+>>>>>>> listing
 
 
 
 
+<<<<<<< HEAD
           <div id="items_controls">
 
             <% if user_signed_in? && current_user.email == @item.user.email && @item.availability == "Available"%>
                 <div class="item_ctrl"><%= link_to 'Edit', edit_item_path(@item) %> | <%= link_to 'Delete', item_path(@item), method: :delete, data: { confirm: 'Are you sure?' } %>
 
                 </div>
+=======
+          <div>
+          	<% if @reserve != nil && @reserve.user.email == current_user.email%>
+		          	<%= form_with scope: :comment, url: add_comment_path, local: true do |form| %>
+>>>>>>> listing
 
         <% elsif user_signed_in? && current_user.email == @item.user.email && @item.availability == "reserved"%>
             <div class="item_ctrl">
                 <%= link_to 'Edit', edit_item_path(@item) %> | <%= link_to 'Delete', item_path(@item), method: :delete, data: { confirm: 'Are you sure?' } %>
             </div>
 
+<<<<<<< HEAD
             <form method = 'PATCH' action = '/items/<%= @item.id %>/done' ><button class ="item_reserved_btn btn btn-info"> Done</button></form>
 
 
@@ -100,3 +110,15 @@
     </div>
 
 </div>
+=======
+							  <p>
+							    <%= form.submit %>
+							  </p>
+								<% end %>
+						<% else%>
+					<% end %>
+				</div>
+       </div>
+   </div>
+</div>
+>>>>>>> listing
