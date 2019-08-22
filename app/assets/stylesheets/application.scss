@@ -43,8 +43,22 @@ h2{
 
 .nav-link{
     // border:1px solid red;
-    color:white;
-    // font-size: 15px;
+    // color: white !important;
+    // text-shadow: 1px 1px 5px #0d606d;
+    font-size: 17px;
+    font-weight:500;
+}
+
+.nav-link:hover{
+    color: yellow !important;
+}
+#hello{
+    display:flex;
+    align-items:center;
+}
+#hello:hover{
+    color: #256463 !important;
+    // text-decoration: none !important;
 }
 
 #nav_logo{

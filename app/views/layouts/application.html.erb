@@ -19,7 +19,7 @@
 <nav class="navbar transparent navbar-expand-lg navbar-light">
 
     <div id="nav_logo">
-        <%= image_tag("logo_01.png", class:"logo")%>
+        <%= link_to image_tag("logo_01.png", class:"logo"), "/"%>
     </div>
 
     <div class="col-4 " id="">
@@ -28,11 +28,9 @@
           <button class="btn btn-info my-2 my-sm-0" type="submit">Search</button>
       </form>
   </div>
-  <div class="collapse navbar-collapse navbar-right col-2  " id="navbarText">
+  <div class="collapse navbar-collapse navbar-right col-2" id="navbarText">
     <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-        </li>
+
         <li class="nav-item">
             <a class="nav-link" href="#">About</a>
         </li>
@@ -47,7 +45,9 @@
             <% if user_signed_in? %>
                 <%= button_to "GiftAway!", new_item_path, :method => "get", class:"btn btn-warning" %>
                 <a href="/users/<%= @users.id %>" class="nav-link">My Dashboard</a>
-                <li class="nav-link"><%= image_tag("login.png", size: "15x15", class:"")%>&nbsp;&nbsp;Hello, <%= @users.name %> &nbsp;&nbsp; </li>
+                <li class="nav-link", id="hello"><%= image_tag("login.png", size: "15x15", class:"")%>&nbsp;&nbsp;Hello, <%= @users.name %> &nbsp;&nbsp; </li>
+            <% else %>
+                <%= button_to "GiftAway!", new_user_registration_path, :method => "get", class:"btn btn-warning" %>
             <% end %>
             <li class="nav-item d-flex flex-row">
                  <% if user_signed_in? %>

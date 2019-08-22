@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
     	  @item = Item.find(params[:id])
           @reserve = Reserve.find{|x| x.item_id == params[:id].to_i}
           @categories = Category.all
-          @comments = Comment.where(item_id: params[:id].to_i).all
+          @comments = Comment.where(item_id: params[:id].to_i).all.order('id DESC')
 
             if current_user
                 @users = User.find(current_user.id)
