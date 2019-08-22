@@ -11,13 +11,13 @@
 
            <p id="items_description"><%= @item.description %></p>
 
-<<<<<<< HEAD
-            <p> Condition:</p>
-           <% if @item.preloved == true %>
-                <p> Preloved </p>
-           <% else %>
-                <p> New </p>
-           <% end %>
+            <p> Condition:
+               <% if @item.preloved == true %>
+                   <span> Preloved </span>
+               <% else %>
+                  <span>New</span>
+               <% end %>
+           </p>
 
           <p id="item_show_username"> posted by <a href = "/users/<%= @item.user.id %>" ><%= @item.user.name %></a></p>
 

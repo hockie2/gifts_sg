@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   has_one :reserve
 
 
+
   validates :name, presence: true, length: { minimum: 3, maximum: 20 }
   validates :category, presence: true
   validates :description, presence: true, length: { minimum: 3, maximum: 500 }

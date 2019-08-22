@@ -1,46 +1,52 @@
-<div class ='container'>
-  
-<%= form_with scope: :item, url: items_path, local: true do |form| %>
-  <p>
-    <%= form.label :Category %>
-    <%= form.collection_select :category_id, @categories, :id, :category %>
-  </p>
-  <p>
-      <%= form.label :name %><br>
-      <%= form.text_field :name %>
-  </p>
+<div id ='items_main_wrapper'>
 
-  <p>
-      <%= form.label :Photos%><br>
-      <%= form.file_field :picture, accept: 'image/png,image/gif,image/jpeg,image/jpg' %>
-    
-  </p>
+    <div id="form_wrapper">
+        <div id="form_item_new_left">
 
-    
-  <p class="error">
-     <%= show_errors(@item, :name) %>
-  </p>
-  <p>
-      <%= form.label :Description%><br>
-      <%= form.text_field :description %>
-  </p>
-    
-  <p class="error">
-     <%= show_errors(@item, :description) %>
-  </p>
+        </div>
+        <div id="form_right">
+            <%= form_with scope: :item, url: items_path, local: true do |form| %>
+              <div class="field">
+                <%= form.label :Category %>
+                <br>
+                <%= form.collection_select :category_id, @categories, :id, :category %>
+              </div>
+              <div class="field">
+                  <%= form.label :name %><br>
+                  <%= form.text_field :name %>
+              </div>
 
-  <p>
-      <%= form.label :Preloved %>
-      <%= select_tag("preloved", options_for_select(["Preloved","New"]))%>
+              <div class="">
+                  <%= form.label :Photos%><br>
+                  <%= form.file_field :picture, accept: 'image/png,image/gif,image/jpeg,image/jpg' %>
+              </div>
 
-  </p>
-     
-  <p class="error">
-     <%= show_errors(@item, :preloved) %>
-  </p>
+              <div class="error">
+                 <%= show_errors(@item, :name) %>
+              </div>
+              <div class="field">
+                  <%= form.label :Description%><br>
+                  <%= form.text_area :description %>
+              </div>
 
+              <div class="error">
+                 <%= show_errors(@item, :description) %>
+              </div>
 
-    <%= form.submit %>
+              <div class="field">
+                  <%= form.label :Preloved %>
+                  <%= select_tag("preloved", options_for_select(["Preloved","New"]))%>
 
-<% end %>
+              </div>
+
+              <div class="error">
+                 <%= show_errors(@item, :preloved) %>
+              </div>
+
+              <div class="actions">
+                <%= form.submit %>
+                </div>
+            <% end %>
+        </div>
+    </div>
 </div>

@@ -27,9 +27,11 @@ class ItemsController < ApplicationController
 	  def new
 
 	  	@categories = Category.all
+
       if current_user
             @users = User.find(current_user.id)
         end
+
 
 	  end
 
@@ -76,10 +78,12 @@ class ItemsController < ApplicationController
          @user = User.find(current_user.id)
       	end
 	    @reserve = Reserve.new
+
 	    @reserve.item_id = @item.id
 	    @reserve.user_id = @user.id
 	     puts "+++++++++++++++"
 	     puts @reserve.id
+
 	    @reserve.save
 
 	    if @item.save
