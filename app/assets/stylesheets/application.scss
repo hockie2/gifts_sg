@@ -37,7 +37,9 @@ h2{
     background: rgba(0,0,0,0);
 }
 
-
+.giftaway_button{
+    width:300px
+}
 
 .nav-link{
     // border:1px solid red;
@@ -111,6 +113,7 @@ h2{
  display:flex;
  justify-content:center;
  align-items: center;
+ position:relative;
 
  img{
     width:100%;
@@ -122,7 +125,7 @@ h2{
 
 .title{
     padding-left:10px;
-    font-weight:bold;
+    font-weight:500;
 
 }
 
@@ -130,13 +133,13 @@ h2{
     padding: 0 10px;
     // border:1px red solid
 
-}
     #description{
+        height:30px;
         margin: 10px auto;
-         line-height:1.2;
-         font-size:15px;
-
+        line-height:1.2;
+        font-size:15px;
     }
+}
 
 
 #timestamp{
@@ -151,9 +154,11 @@ h2{
     }
 }
 
-// .bottom_wrapper{
-//     border:1px solid purple
-// }
+.bottom_wrapper{
+    height:70px;
+    // border:1px solid purple;
+    position:relative;
+}
 
 
 .controls{
@@ -161,8 +166,9 @@ h2{
     margin-bottom:10px;
     // border:1px red solid;
     // position: absolute;
-    bottom: 0;
-    float:right;
+    position:absolute;
+    bottom:0;
+    right:0;
     a{
         color:grey;
         text-decoration: none;
@@ -170,13 +176,31 @@ h2{
 }
 
 textarea{
-    width:400px;
+    border: 1px solid #d3d3d3;
+    width:95%;
     height:100px;
 }
 
-.btn{
-    float:right;
-    margin-bottom: 10px
+#reserved_btn {
+    // float:right;
+    margin-bottom: 10px;
+    position:absolute;
+    bottom:0;
+    right:0;
 }
-/*---CARD ENDS-----------------------*/
 
+#reserved{
+    width:100%;
+    height:20px;
+    border:1px solid #d3d3d3;
+    background-color:rgba(255, 255, 255, 0.7);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:absolute;
+    bottom:0;
+    color:grey;
+}
+
+
+/*---CARD ENDS-----------------------*/
