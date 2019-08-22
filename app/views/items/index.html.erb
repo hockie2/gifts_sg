@@ -2,7 +2,8 @@
 
 <div class="main_wrapper">
 
-<% @items.each do |item| %>
+<% for item in @items %>
+
     <div class="post_wrapper">
 
 
@@ -24,7 +25,7 @@
                 <p id="username">posted by  <a href = "/users/<%= item.user.id %>" ><%= item.user.name %></a></p>
                     <% if user_signed_in? && current_user.email == item.user.email && item.availability == "Available"%>
                         <div class="controls"><%= link_to 'Edit', edit_item_path(item) %> | <%= link_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %>
-                            
+
                         </div>
 
                     <% elsif user_signed_in? && current_user.email == item.user.email && item.availability == "reserved"%>
@@ -41,15 +42,10 @@
                     <% end %>
             </div>
 
-
-
         </div>
     </div>
 <% end %>
 </div>
 
 
-
 </div>
-
-

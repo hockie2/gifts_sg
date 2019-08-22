@@ -2,10 +2,16 @@ class ItemsController < ApplicationController
 	  	before_action :authenticate_user!, :except => [ :show, :index ]
 
       def index
-        @items = Item.all.sort
-            if current_user
+        @items = if params[:term]
+          Item.where('name Like?', "%#{params[:term]}%")
+        else
+          Item.all.sort
+        end
+
+          if current_user
              @users = User.find(current_user.id)
           end
+
 	  end
 
 	  def show
@@ -52,6 +58,8 @@ class ItemsController < ApplicationController
 
 	    if @item.save
 	      redirect_to @item
+        puts "let's check the create item out +++++++++++++"
+        puts @item.inspect
 	    else
 	    	@categories = Category.all
 	      	render 'new'
@@ -122,7 +130,7 @@ class ItemsController < ApplicationController
 	private
 
 	  def item_params
-	    params.require(:item).permit(:name, :description, :preloved, :availability, :public_id,  :category_id)
+	    params.require(:item).permit(:name, :description, :preloved, :availability, :public_id, :category_id, :term)
 	  end
 
 
