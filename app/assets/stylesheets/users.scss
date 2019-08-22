@@ -68,13 +68,12 @@ label{
 
 }
 
-
 .actions input{
     width:150px;
     height:40px;
     background-color: #31c2c3;
     border: none;
-    margin:20px auto;
+    margin:0 auto 20px auto;
     color:white;
 }
 
@@ -103,3 +102,7 @@ label{
     // justify-content:center;
 }
 
+hr.dashboard_line{
+    width:97%;
+    border: 1px solid #31c2c3;
+}

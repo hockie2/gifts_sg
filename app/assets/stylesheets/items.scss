@@ -21,7 +21,7 @@
 
 #items_inner_wrapper{
     width:80%;
-    height:auto;
+    min-height:700px;
     // border:1px solid purple;
     border-radius: 20px;
     display: flex;
@@ -33,11 +33,14 @@
 
 #items_left{
     width:40%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
     img{
-        width:100%;
+        width:98%;
         height: 100%;
-        object-fit:cover;
+        object-fit:contain;
         border-top-left-radius: 20px;
         border-bottom-left-radius: 20px;
     }
@@ -94,7 +97,7 @@
 
 #comment_box{
     // border:1px solid red;
-    background-color:#ebebeb;
+    background-color:#f3f3f3;
     margin: 10px auto;
     padding:5px;
     border-radius:5px;
@@ -108,3 +111,39 @@
 }
 
 /*-----COMMENTS BOX ENDS------------------------*/
+
+#items_controls{
+    width:100%;
+    min-height:30px;
+    // background-color:pink;
+    display: flex;
+    flex-direction:row;
+    // justify-content:space-between;
+    align-items:center;
+    position:relative;
+    // border:1px solid red;
+
+}
+
+.item_ctrl{
+    // border:1px solid red;
+
+    a{
+    color:grey;
+    }
+}
+
+.item_reserved_btn{
+    position:absolute;
+    right:0;
+    top:0;
+}
+
+#contacts{
+    width:100%;
+    height:50px;
+    background-color:#ececec;
+    margin-top:20px;
+    padding:0 10px;
+
+}
