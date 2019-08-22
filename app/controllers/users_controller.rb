@@ -26,11 +26,13 @@ before_action :authenticate_user!, :except => [ :show, :index ]
     puts params[:id]
     @items = Item.select{|item| item.user_id == params[:id].to_i}
 
+   @reservedItems = Reserve.select{|item| item.user_id == params[:id].to_i}
+   @myReservedItems = @reservedItems.map{|e| e.item}
+   
     if current_user 
-            @users = User.find(current_user.id)
-           
-           
-        end
+      @users = User.find(current_user.id)
+         
+    end
     puts "============================="
     puts @users.inspect
   end

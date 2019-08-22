@@ -6,7 +6,6 @@ class ItemsController < ApplicationController
             if current_user
              @users = User.find(current_user.id)
           end
-
 	  end
 
 	  def show
@@ -18,20 +17,18 @@ class ItemsController < ApplicationController
 
       @comments = Comment.where(item_id: params[:id].to_i).all
 
+
         if current_user
             @users = User.find(current_user.id)
         end
-
 	  end
 
 	  def new
-
 	  	@categories = Category.all
 
       if current_user
             @users = User.find(current_user.id)
         end
-
 
 	  end
 
@@ -45,7 +42,6 @@ class ItemsController < ApplicationController
 
 	  def create
 	  	@item = Item.new(item_params)
-
 	  	uploaded_file = params[:item][:picture].path
 
   		cloudnary_file = Cloudinary::Uploader.upload(uploaded_file)
@@ -53,14 +49,12 @@ class ItemsController < ApplicationController
   		@item.public_id = cloudnary_file["public_id"]
       @item.user_id = current_user.id
 
+
 	    if @item.save
 	      redirect_to @item
-
 	    else
 	    	@categories = Category.all
-
-	      render 'new'
-
+	      	render 'new'
 	    end
 	  end
 
@@ -85,13 +79,39 @@ class ItemsController < ApplicationController
 	     puts @reserve.id
 
 	    @reserve.save
-
 	    if @item.save
 	    	redirect_to items_path
 	    end
-
 	  end
 
+
+	  def release
+	  	@item = Item.find(params[:id])
+	  		puts "+++++++++++"
+	  		puts  @item. availability
+	    @item.availability = "Available"
+	    if current_user
+         @user = User.find(current_user.id)
+      	end
+	    @reserve = @item.reserve
+	    @reserve.destroy
+	   	if @item.save
+	    	redirect_to items_path
+	    end
+	  end
+
+	  def done
+	  	@item = Item.find(params[:id])
+	    if current_user
+         @user = User.find(current_user.id)
+      	end
+	    @reserve = @item.reserve
+	    @reserve.destroy
+	    @item.availability = "Closed"
+	   	if @item.save
+	    	redirect_to items_path
+	    end
+	  end
 
 	  def destroy
 	  	@item = Item.find(params[:id])
