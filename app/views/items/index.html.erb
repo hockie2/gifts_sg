@@ -10,7 +10,11 @@
             <span class="title"><div id="profile_pic"></div><%= item.name %></span>
 
         </div>
-        <div id="photo"><%= link_to item_path(item) do %><%= cl_image_tag(item.public_id) %><% end %></div>
+        <div id="photo"><%= link_to item_path(item) do %><%= cl_image_tag(item.public_id) %><% end %>
+            <% if item.availability == 'reserved' %>
+                <div id="reserved">RESERVED</div>
+            <% end %>
+       </div>
         <div class="description_wrapper">
             <div id="description"><%= item.description.truncate_words(10) %></div>
 
@@ -24,7 +28,7 @@
                         <div class="controls"><%= link_to 'Edit', edit_item_path(item) %> | <%= link_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %>
                         </div>
                     <% elsif user_signed_in? && current_user.email != item.user.email %>
-                        <form method = 'PATCH' action ='/items/<%= item.id %>/reserve'><button class ="btn btn-info reserve"> Reserve </button></form>
+                        <form method = 'PATCH' action ='/items/<%= item.id %>/reserve'><button class ="btn btn-info reserve", id="reserved_btn"> Reserve </button></form>
                     <% else%>
 
                     <% end %>
