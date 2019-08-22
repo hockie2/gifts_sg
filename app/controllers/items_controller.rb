@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
 	  	before_action :authenticate_user!, :except => [ :show, :index ]
 
       def index
+        @search = true
         @items = Item.search(params[:term])
 
           if current_user

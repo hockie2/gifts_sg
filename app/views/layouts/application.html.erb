@@ -22,16 +22,20 @@
         <%= image_tag("logo_01.png", class:"logo")%>
     </div>
 
-    <div class="col-4 " id="">
-    	<form class="form-inline ">
-    	<%= form_tag(items_path, method: :get) do %>
-    		<%= text_field_tag :term %>
-    		<%= submit_tag 'Search', name: nil %>
-
+    <div class="col-4" id="">
+    	<% if @search %>
+    		<div class="search">
+    			<form class="form-inline ">
+	    			<%= form_tag(items_path, method: :get) do %>
+	    				<%= text_field_tag :term %>
+	    				<%= submit_tag 'Search', name: nil %>
+	    			<% end %>
+      		</form>
+    		</div>
     	<% end %>
+    </div>
 
-      </form>
-  </div>
+
   <div class="collapse navbar-collapse navbar-right col-2  " id="navbarText">
     <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
