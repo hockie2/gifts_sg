@@ -20,9 +20,11 @@
            </p>
 
               <p id="item_show_username"> posted by Me <%= @item.created_at.strftime('%d %B')%></p>
+
               <div id="items_controls">
 
             <% if user_signed_in? && current_user.email == @item.user.email && @item.availability == "Available"%>
+
 
                 <div class="item_ctrl">
                   <%= link_to 'Edit', edit_item_path(@item) %> | <%= link_to 'Delete', item_path(@item), method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -46,7 +48,6 @@
             </div>
 
 
-
         <div id="contacts">
             <div id="contacts_left">
                     <div class="value"><span class="key">Gifter: </span><%= @item.user.name %></div>
@@ -61,8 +62,7 @@
         </div>
 
 
-
-          <hr>
+         <hr>
 
     <% if @reserve != nil && @reserve.user.email == current_user.email || @item.user.email == current_user.email %>
         <%= form_with scope: :comment, url: add_comment_path, local: true do |form| %>
