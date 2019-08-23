@@ -5,9 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-5.times do |i|
-  Category.create(category: "Category ##{i}")
-end
+# 5.times do |i|
+#   Category.create(category: "Category ##{i}")
+# end
+
+Category.create(category: "Apparels")
+Category.create(category: "Electronics")
+Category.create(category: "Furniture and fittings")
+Category.create(category: "Toys and Games")
+Category.create(category: "Others")
 
 5.times do |i|
 

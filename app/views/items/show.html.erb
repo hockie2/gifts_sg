@@ -19,7 +19,7 @@
                <% end %>
            </p>
 
-              <p id="item_show_username"> posted by Me <%= @item.created_at.strftime('%d %B')%></p>
+              <p id="item_show_username"> posted by <%= @item.user.name %>, <%= @item.created_at.strftime('%d %B')%></p>
 
               <div id="items_controls">
 
@@ -47,7 +47,8 @@
 
             </div>
 
-
+      <% if user_signed_in? %>
+        <% if @reserve.user.email == current_user.email || @item.user.email == current_user.email && @item.availability == "reserved" %>
         <div id="contacts">
             <div id="contacts_left">
                     <div class="value"><span class="key">Gifter: </span><%= @item.user.name %></div>
@@ -60,11 +61,11 @@
                     <div class="value"><span class="key">Contact no.: </span><%= current_user.phone %></div>
             </div>
         </div>
+        <% else %>
+        <% end %>
 
 
-         <hr>
-
-    <% if @reserve != nil && @reserve.user.email == current_user.email || @item.user.email == current_user.email %>
+        <% if @reserve != nil && @reserve.user.email == current_user.email || @item.user.email == current_user.email %>
         <%= form_with scope: :comment, url: add_comment_path, local: true do |form| %>
             <p>
                 <h5>Say Thanks:</h5>
@@ -75,7 +76,14 @@
                 <%= form.submit "Send Thanks" %>
             </div>
         <% end %>
+        <% else %>
     <% end %>
+
+    <% end %>
+
+         <hr>
+
+
 
 
     <% if @comments.length > 0 %>
