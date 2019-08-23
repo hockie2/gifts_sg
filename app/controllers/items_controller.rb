@@ -8,7 +8,6 @@ class ItemsController < ApplicationController
           if current_user
              @users = User.find(current_user.id)
           end
-
 	  end
 
 	  def show
@@ -20,6 +19,7 @@ class ItemsController < ApplicationController
             if current_user
                 @users = User.find(current_user.id)
             end
+
 	  end
 
 	  def new
@@ -51,8 +51,6 @@ class ItemsController < ApplicationController
 
 	    if @item.save
 	      redirect_to @item
-        puts "let's check the create item out +++++++++++++"
-        puts @item.inspect
 	    else
 	    	@categories = Category.all
 	      	render 'new'
