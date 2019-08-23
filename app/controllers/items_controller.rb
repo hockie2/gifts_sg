@@ -104,7 +104,7 @@ class ItemsController < ApplicationController
 	    @reserve.destroy
 
 	   	if @item.save
-	    	redirect_to items_path
+	    	redirect_to @user
 	    end
 	  end
 

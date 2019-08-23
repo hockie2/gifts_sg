@@ -212,6 +212,19 @@ textarea{
     color:white;
 }
 
+#closed{
+    width:100%;
+    height:20px;
+    border:1px solid #d3d3d3;
+    // border:1px solid red;
+    background-color:grey;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:absolute;
+    bottom:0;
+    color:white;
+}
 
 .reserved_btn {
     // float:right;
