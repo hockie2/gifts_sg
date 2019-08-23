@@ -79,7 +79,7 @@ label{
 
 #user_inner_wrapper{
     width:88%;
-    height:auto;
+    min-height:700px;
     // border:1px solid purple;
     border-radius: 20px;
     display: flex;
@@ -104,5 +104,6 @@ label{
 
 hr.dashboard_line{
     width:97%;
-    border: 1px solid #31c2c3;
+    height:1px;
+    background-color: #31c2c3;
 }
