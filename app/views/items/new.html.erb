@@ -34,8 +34,10 @@
               </div>
 
               <div class="field">
-                  <%= form.label :Preloved %>
-                  <%= select_tag("preloved", options_for_select(["Preloved","New"]))%>
+                  <%= form.label :preloved %>
+
+                  <%= form.select(:preloved, options_for_select([['Preloved', true], ['New', false]]))  %>
+
 
               </div>
 
