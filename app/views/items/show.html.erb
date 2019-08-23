@@ -77,7 +77,28 @@
                 <% end %>
 
 
+<% if user_signed_in? && @item.availability == "reserved" %>
+
+                <% if current_user.email == @item.user.email || current_user.email == @item.reserve.user.email %>
+                    <div id="contacts">
+                        <div id="contacts_left">
+                                <div class="value"><span class="key">Gifter: </span><%= @item.user.name %></div>
+                                <div class="value"><span class="key">Email: </span><%= @item.user.email %></div>
+                                <div class="value"><span class="key">Contact no.: </span><%= @item.user.phone %></div>
+                        </div>
+                        <div id="contacts_right">
+                                <div class="value"><span class="key">Requester: </span><%= @item.reserve.user.name %></div>
+                                <div class="value"><span class="key">Email: </span><%= @item.reserve.user.email %></div>
+                                <div class="value"><span class="key">Contact no.: </span><%= @item.reserve.user.phone %></div>
+                        </div>
+                    </div>
+                <% else %>
+
+                <% end %>
+
+
         <% end %>
+
 
 
          <hr>
@@ -92,8 +113,6 @@
                 <%= form.submit "Send Thanks" %>
             </div>
         <% end %>
-
-
 
     <% if @comments.length > 0 %>
         <div>

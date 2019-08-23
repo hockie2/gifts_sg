@@ -55,8 +55,8 @@
 
                     <form method = 'PATCH' action ='/items/<%= item.id %>/reserve'><button class ="btn btn-info reserve reserved_btn"> Reserve </button></form>
 
-                <% elsif user_signed_in? && current_user.email != item.user.email &&  current_user.reserve.length > 0 && item.availability == "reserved" && current_user.id == item.reserve.user_id %>
 
+                <% elsif user_signed_in? && current_user.email != item.user.email &&  current_user.reserve.length > 0 && item.availability == "reserved" && current_user.id == item.reserve.user_id %>
 
 
                     <p id="username">posted by  <a href = "/users/<%= item.user.id %>" ><%= item.user.name %></a></p>

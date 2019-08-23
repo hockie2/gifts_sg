@@ -10,8 +10,11 @@
 #   Category.create(category: "Category ##{i}")
 # end
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> c96c16abe020e611567e427b4953f2aedcb01ee2
 
 
 items_list = [
