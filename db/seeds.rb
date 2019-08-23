@@ -6,18 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-categories_list = ["Apparel", "Electronics", "Furniture", "Toys/Games", "Others"]
-categories_list.each do |category|
-  Category.create(category: category)
-end
 
-users_list = [
-  ["khai", "000000000", "Anson Road", "khai@gmail.com", "123456"],
-  ["herda", "111111111", "Tanjong Pagar", "herda@yahoo.com.sg", "654321"]
-]
-users_list.each do |name, phone, location, email, password|
-  User.create(name: name, phone: phone, location: location, email: email, password: password)
-end
 
 items_list = [
   ["Blender", "k4rmwv9aujyvnbuww8g7", "Easy to use 3-speed blender!", "t", "reserved", "1", "2"],
