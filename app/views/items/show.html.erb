@@ -50,18 +50,25 @@
         </div>
 
         <div id="contacts">
-            Placeholder for contacts
-
-
+            <div id="contacts_left">
+                    <div class="value"><span class="key">Gifter: </span><%= @item.user.name %></div>
+                    <div class="value"><span class="key">Email: </span><%= @item.user.email %></div>
+                    <div class="value"><span class="key">Contact no.: </span><%= @item.user.phone %></div>
+            </div>
+            <div id="contacts_right">
+                    <div class="value"><span class="key">Requester: </span><%= current_user.name %></div>
+                    <div class="value"><span class="key">Email: </span><%= current_user.email %></div>
+                    <div class="value"><span class="key">Contact no.: </span><%= current_user.phone %></div>
+            </div>
         </div>
 
 
           <hr>
 
-           <% if @reserve != nil && @reserve.user.email == current_user.email %>
+           <% if @reserve != nil && @reserve.user.email == current_user.email || @item.user.email == current_user.email %>
                 <%= form_with scope: :comment, url: add_comment_path, local: true do |form| %>
                     <p>
-                        <h5>Say a Thanks:</h5>
+                        <h5>Say Thanks:</h5>
                         <%= form.text_area :comment %>
                     </p>
 
