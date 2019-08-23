@@ -52,7 +52,6 @@
                 <% elsif user_signed_in? && current_user.email != item.user.email &&  current_user.reserve.length > 0 && item.availability == "reserved" && current_user.id == item.reserve.user_id %>
 
 
-
                     <p id="username">posted by  <a href = "/users/<%= item.user.id %>" ><%= item.user.name %></a></p>
                     <div class="controls">
                      <form method = 'PATCH' action ='/items/<%= item.id %>/release'><button class ="btn btn-info reserve"> Release </button></form>
