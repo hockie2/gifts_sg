@@ -7,7 +7,6 @@ before_action :authenticate_user!, :except => [ :show, :index ]
 
   end
 
-
   def new
     allUser = User.all
     @users = allUser.sort_by{|user| user.id}
@@ -24,11 +23,11 @@ before_action :authenticate_user!, :except => [ :show, :index ]
 
   def show
     puts params[:id]
-    @items = Item.select{|item| item.user_id == params[:id].to_i}
+    @items = Item.select{|item| item.user_id == params[:id].to_i}.sort_by {|item| item.availability}
 
-   @reservedItems = Reserve.select{|item| item.user_id == params[:id].to_i}
-   @myReservedItems = @reservedItems.map{|e| e.item}
-   
+    @user = User.find(params[:id])
+    @reservedItems = Reserve.select{|item| item.user_id == params[:id].to_i}
+    @myReservedItems = @reservedItems.map{|e| e.item}.sort_by {|item| item.availability}.reverse
     if current_user 
       @users = User.find(current_user.id)
          
