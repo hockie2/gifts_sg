@@ -6,10 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# 5.times do |i|
-#   Category.create(category: "Category ##{i}")
-# end
 
+categories_list = ["Apparel", "Electronics", "Furniture", "Toys/Games", "Others"]
+categories_list.each do |category|
+  Category.create(category: category)
+end
 
 items_list = [
   ["Blender", "k4rmwv9aujyvnbuww8g7", "Easy to use 3-speed blender!", "t", "reserved", "1", "2"],
