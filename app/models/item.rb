@@ -8,13 +8,13 @@ class Item < ApplicationRecord
   validates :name, presence: true, length: { minimum: 3, maximum: 20 }
   validates :category, presence: true
   validates :description, presence: true, length: { minimum: 3, maximum: 500 }
- 
+
 
   def self.search(term)
     if term
-      where(['name LIKE ? OR description LIKE ?', "%#{term}%", "%#{term}%"]).order('id DESC')
+      where(['lower(name) LIKE ? AND availability != ? OR lower(description) LIKE ? AND availability != ?', "%#{term.downcase}%", "closed", "%#{term.downcase}%", "closed"]).order('id DESC')
     else
-      order ('id DESC')
+      where("availability != 'closed'").order('id DESC')
     end
   end
 

@@ -3,15 +3,11 @@ class ItemsController < ApplicationController
 
       def index
         @search = true
-        @items_search = Item.search(params[:term])
-        @items = Item.select{|item| item.availability != 'closed'}.sort
+        @items = Item.search(params[:term])
 
-        if current_user
-	        @users = User.find(current_user.id)
-            # @items = Item.select{|item| item.availability != 'closed'}.sort
-
-        end
-
+          if current_user
+             @users = User.find(current_user.id)
+          end
 	  end
 
 	  def show
@@ -23,6 +19,7 @@ class ItemsController < ApplicationController
             if current_user
                 @users = User.find(current_user.id)
             end
+
 	  end
 
 	  def new
@@ -60,8 +57,6 @@ class ItemsController < ApplicationController
 
 	    if @item.save
 	      redirect_to @item
-        puts "let's check the create item out +++++++++++++"
-        puts @item.inspect
 	    else
 	    	@categories = Category.all
 	    	@users = User.find(current_user.id)
@@ -104,10 +99,10 @@ class ItemsController < ApplicationController
 	    if current_user
          @user = User.find(current_user.id)
       	end
-      	
+
 	    @reserve = @item.reserve
 	    @reserve.destroy
-		
+
 	   	if @item.save
 	    	redirect_to items_path
 	    end
