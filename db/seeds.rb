@@ -29,3 +29,11 @@ items_list = [
 items_list.each do |name, public_id, description, preloved, availability, user_id, category_id|
   Item.create(name: name, public_id: public_id, description: description, preloved: preloved, availability: availability, user_id: user_id, category_id: category_id)
 end
+
+reserves_list = [
+  ["1", "2"],
+  ["4", "1"]
+]
+reserves_list.each do |item_id, user_id|
+  Reserve.create(item_id: item_id, user_id: user_id)
+end
