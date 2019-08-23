@@ -1,11 +1,11 @@
 <div id ='items_main_wrapper'>
-
     <div id="items_inner_wrapper">
         <div id="items_left">
             <%= cl_image_tag(@item.public_id) %>
+            
         </div>
         <div id="items_right">
-           <p>Category > <%= @item.category %></p>
+           <p>Category <%= @item.category %></p>
 
            <p id="items_name"><%= @item.name %><p>
 
@@ -19,35 +19,33 @@
                <% end %>
            </p>
 
-          <p id="item_show_username"> posted by <a href = "/users/<%= @item.user.id %>" ><%= @item.user.name %></a>, <%= @item.created_at.strftime('%d %B')%></p>
-
-
-
-
-          <div id="items_controls">
-
+              <p id="item_show_username"> posted by Me <%= @item.created_at.strftime('%d %B')%></p>
             <% if user_signed_in? && current_user.email == @item.user.email && @item.availability == "Available"%>
-                <div class="item_ctrl"><%= link_to 'Edit', edit_item_path(@item) %> | <%= link_to 'Delete', item_path(@item), method: :delete, data: { confirm: 'Are you sure?' } %>
 
+
+              <div id="items_controls">
+
+
+                <div class="item_ctrl">
+                  <%= link_to 'Edit', edit_item_path(@item) %> | <%= link_to 'Delete', item_path(@item), method: :delete, data: { confirm: 'Are you sure?' } %>
                 </div>
+          <% elsif user_signed_in? && current_user.email == @item.user.email && @item.availability == "reserved"%>
+              <div class="item_ctrl">
+                  <%= link_to 'Edit', edit_item_path(@item) %> | <%= link_to 'Delete', item_path(@item), method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <form method = 'PATCH' action = '/items/<%= @item.id %>/done' ><button class ="item_reserved_btn btn btn-info"> Done</button></form>
+              </div>
+            <% elsif user_signed_in? && current_user.email != @item.user.email && @item.availability == "Available" %> 
+                <div class="item_ctrl">
+                  <form method = 'PATCH' action ='/items/<%= @item.id %>/reserve'><button class ="item_reserved_btn btn btn-info reserve"> Reserve </button></form>
+                </div>
+            <% elsif user_signed_in? && current_user.email != @item.user.email &&  current_user.reserve.length > 0 &&  @item.availability == "reserved"  && current_user.id == @item.reserve.user_id%>
+              <div class="item_ctrl">
+                  <form method = 'PATCH' action ='/items/<%= @item.id %>/release'><button class ="item_reserved_btn btn btn-info reserve"> Release </button></form>
+              </div>
+            <% else %>
+            <% end %>
 
-        <% elsif user_signed_in? && current_user.email == @item.user.email && @item.availability == "reserved"%>
-            <div class="item_ctrl">
-                <%= link_to 'Edit', edit_item_path(@item) %> | <%= link_to 'Delete', item_path(@item), method: :delete, data: { confirm: 'Are you sure?' } %>
-            </div>
-
-            <form method = 'PATCH' action = '/items/<%= @item.id %>/done' ><button class ="item_reserved_btn btn btn-danger"> Done</button></form>
-
-
-        <% elsif user_signed_in? && current_user.email != @item.user.email && @item.availability == "Available" %>
-            <form method = 'PATCH' action ='/items/<%= @item.id %>/reserve'><button class ="item_reserved_btn btn btn-info reserve"> Reserve </button></form>
-
-        <% elsif user_signed_in? && current_user.email != @item.user.email &&  current_user.reserve.length > 0 && current_user.id == @item.reserve.user_id%>
-             <form method = 'PATCH' action ='/items/<%= @item.id %>/release'><button class ="item_reserved_btn btn btn-info reserve"> Release </button></form>
-
-        <% end %>
-
-        </div>
+          
 
         <div id="contacts">
             <div id="contacts_left">
@@ -63,47 +61,43 @@
         </div>
 
 
-          <hr>
+         <hr>
 
-           <% if @reserve != nil && @reserve.user.email == current_user.email || @item.user.email == current_user.email %>
-                <%= form_with scope: :comment, url: add_comment_path, local: true do |form| %>
-                    <p>
-                        <h5>Say Thanks:</h5>
-                        <%= form.text_area :comment %>
-                    </p>
 
-                    <div class="actions">
-                        <%= form.submit "Send Thanks" %>
-                    </div>
+   <% if @reserve != nil && @reserve.user.email == current_user.email %>
+        <%= form_with scope: :comment, url: add_comment_path, local: true do |form| %>
+            <p>
+                <h5>Say a Thanks:</h5>
+                <%= form.text_area :comment %>
+            </p>
+
+            <div class="actions">
+                <%= form.submit "Send Thanks" %>
+            </div>
+        <% end %>
+    <% end %>
+
+
+
+    <% if @comments.length > 0 %>
+        <div>
+            <% @comments.each do |comment| %>
+
+            <div id="comment_box">
+                <p><%= comment.comment %></p>
+                <p id="item_show_username">Posted by: <%= comment.user.name%>, <%= comment.updated_at.strftime('%d %B')%></p>
+
+                <% if comment.user.email == current_user.email %>
+                  <div id="comments_controls"><%= link_to 'Edit', edit_comment_path(comment) %> | <%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'Are you sure you want to delete this comment?' } %>
+                  </div>
+
                 <% end %>
+             </div>
             <% end %>
-
-
-
-            <% if @comments.length > 0 %>
-                <div>
-
-                    <% @comments.each do |comment| %>
-
-                    <div id="comment_box">
-                        <p><%= comment.comment %></p>
-                        <p id="item_show_username">Posted by: <%= comment.user.name%>, <%= comment.updated_at.strftime('%d %B')%></p>
-
-                            <% if comment.user.email == current_user.email %>
-                                <div id="comments_controls"><%= link_to 'Edit', edit_comment_path(comment) %> | <%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'Are you sure you want to delete this comment?' } %>
-                                </div>
-
-                            <% end %>
-                        </div>
-                    <% end %>
-                </div>
-            <% end %>
-
+        </div>
+    <% end %>
 
         </div>
-
-
-
-    </div>
-
+  </div>
+</div>
 </div>

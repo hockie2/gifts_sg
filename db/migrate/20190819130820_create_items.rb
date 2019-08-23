@@ -4,7 +4,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :public_id
       t.text :description
-      t.boolean :preloved, default: true
+      t.boolean :preloved
       t.text :availability, default: "Available"
       t.references :user
 

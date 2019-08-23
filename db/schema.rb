@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2019_08_21_095712) do
     t.string "name"
     t.string "public_id"
     t.text "description"
-    t.boolean "preloved", default: true
+    t.boolean "preloved"
     t.text "availability", default: "Available"
     t.bigint "user_id"
     t.datetime "created_at", null: false
