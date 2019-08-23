@@ -2,7 +2,7 @@
     <div id="items_inner_wrapper">
         <div id="items_left">
             <%= cl_image_tag(@item.public_id) %>
-            
+
         </div>
         <div id="items_right">
            <p>Category <%= @item.category %></p>
@@ -20,9 +20,9 @@
            </p>
 
               <p id="item_show_username"> posted by Me <%= @item.created_at.strftime('%d %B')%></p>
-            <% if user_signed_in? && current_user.email == @item.user.email && @item.availability == "Available"%>
-
               <div id="items_controls">
+
+            <% if user_signed_in? && current_user.email == @item.user.email && @item.availability == "Available"%>
 
                 <div class="item_ctrl">
                   <%= link_to 'Edit', edit_item_path(@item) %> | <%= link_to 'Delete', item_path(@item), method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -30,9 +30,9 @@
           <% elsif user_signed_in? && current_user.email == @item.user.email && @item.availability == "reserved"%>
               <div class="item_ctrl">
                   <%= link_to 'Edit', edit_item_path(@item) %> | <%= link_to 'Delete', item_path(@item), method: :delete, data: { confirm: 'Are you sure?' } %>
-                  <form method = 'PATCH' action = '/items/<%= @item.id %>/done' ><button class ="item_reserved_btn btn btn-info"> Done</button></form>
               </div>
-            <% elsif user_signed_in? && current_user.email != @item.user.email && @item.availability == "Available" %> 
+                  <form method = 'PATCH' action = '/items/<%= @item.id %>/done' ><button class ="item_reserved_btn btn btn-info"> Done</button></form>
+            <% elsif user_signed_in? && current_user.email != @item.user.email && @item.availability == "Available" %>
                 <div class="item_ctrl">
                   <form method = 'PATCH' action ='/items/<%= @item.id %>/reserve'><button class ="item_reserved_btn btn btn-info reserve"> Reserve </button></form>
                 </div>
@@ -43,7 +43,8 @@
             <% else %>
             <% end %>
 
-          
+            </div>
+
 
         <div id="contacts">
             Placeholder for contacts
