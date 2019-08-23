@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  has_one :category
+  belongs_to :category
   belongs_to :user
   has_one :comment
   has_one :reserve

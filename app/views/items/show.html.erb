@@ -72,6 +72,18 @@
                                 <div class="value"><span class="key">Contact no.: </span><%= @item.reserve.user.phone %></div>
                         </div>
                     </div>
+
+                        <%= form_with scope: :comment, url: add_comment_path, local: true do |form| %>
+                            <p>
+                                <h5>Say Thanks:</h5>
+                                <%= form.text_area :comment %>
+                            </p>
+
+                            <div class="actions">
+                                <%= form.submit "Send Thanks" %>
+                            </div>
+                        <% end %>
+
                 <% else %>
 
                 <% end %>
@@ -82,16 +94,7 @@
 
          <hr>
 
-        <%= form_with scope: :comment, url: add_comment_path, local: true do |form| %>
-            <p>
-                <h5>Say Thanks:</h5>
-                <%= form.text_area :comment %>
-            </p>
 
-            <div class="actions">
-                <%= form.submit "Send Thanks" %>
-            </div>
-        <% end %>
 
     <% if @comments.length > 0 %>
         <div>
