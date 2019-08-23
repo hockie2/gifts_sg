@@ -5,17 +5,30 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 # 5.times do |i|
 #   Category.create(category: "Category ##{i}")
 # end
 
-Category.create(category: "Apparels")
-Category.create(category: "Electronics")
-Category.create(category: "Furniture and fittings")
-Category.create(category: "Toys and Games")
-Category.create(category: "Others")
 
-5.times do |i|
 
-	Item.create(name: "Dress ##{i}", description: "A dress", public_id: "sz1pne0rmk2jsh5ti5hn", preloved: "True")
+
+
+items_list = [
+  ["Blender", "k4rmwv9aujyvnbuww8g7", "Easy to use 3-speed blender!", "t", "reserved", "1", "2"],
+  ["Car vacuum cleaner", "w5o5xlziondfu7xgckpl", "comes with 5m cord", "t", "Available", "1", "2"],
+  ["Kids backpack", "o2gz56k1xdhtm5zgffys", "BUZZ LIGHTYEAR backpack", "t", "Available", "1", "5"],
+  ["Casual runners", "rf89c5ieaautcaveifpw", "Ladies casual runners. Size US7.5", "t", "reserved", "2", "1"],
+  ["off-shoulder dress", "o7nm58i05drilznb9lo7", "Medium size. Never used!", "f", "Available", "2", "1"]
+]
+items_list.each do |name, public_id, description, preloved, availability, user_id, category_id|
+  Item.create(name: name, public_id: public_id, description: description, preloved: preloved, availability: availability, user_id: user_id, category_id: category_id)
+end
+
+reserves_list = [
+  ["1", "2"],
+  ["4", "1"]
+]
+reserves_list.each do |item_id, user_id|
+  Reserve.create(item_id: item_id, user_id: user_id)
 end
