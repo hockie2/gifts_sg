@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+#adding back categories
+
 categories_list = ["Apparel", "Electronics", "Furniture", "Toys/Games", "Others"]
 categories_list.each do |category|
   Category.create(category: category)
