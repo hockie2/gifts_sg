@@ -41,7 +41,9 @@ before_action :authenticate_user!, :except => [:index ]
   end
 
   def show
+    
     instance_variable_set
+
   end
 
   def reservedItems
@@ -74,7 +76,6 @@ private
     @items_available = Item.select{|item| item.user_id == params[:id].to_i && item.availability == "Available"}
     @items_closed = Item.select{|item| item.user_id == params[:id].to_i && item.availability == "closed"}
     @user = User.find(params[:id])
-    @users= User.find(params[:id])
     @reservedItems = Reserve.select{|item| item.user_id == params[:id].to_i}
     @myReservedItems = @reservedItems.map{|e| e.item}.sort_by {|item| item.availability}.reverse
   end

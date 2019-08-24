@@ -3,25 +3,27 @@
     <div id="user_inner_wrapper">
 
         <div id="user_top_wrapper">
-            <% if current_user && current_user.id == @user.id %>
+            <% if current_user.id == @user.id %>
                 <h2>MY LISTINGS</h2>
             <% else %>
                 <h2><%= @user.name %> 's LISTINGS</h2>
             <% end %>
         </div>
-        <% if @items_reserved.length > 0 %>
-            <p><%= link_to "Reserved", reservedItems_path %> ( <%= @items_reserved.length %>)</p>
-        <% end %>
-        <% if @items_available.length > 0 %>
-            <p><%= link_to "Available", availableItems_path %> ( <%= @items_available.length %>)</p>
-        <% end %>
-        
-        <% if @items_closed.length > 0 %>
-            <p><%= link_to "Closed", closedItems_path %> ( <%= @items_closed.length  %>)</p>
-        <% end %>
-        <% if @myReservedItems.length > 0 %>
-            <p><%= link_to "Reserved by me", myReservedItems_path %> ( <%= @myReservedItems.length %>)</p>
-        <% end %>
+        <div class = 'link-paths'>
+            <% if @items_reserved.length > 0 %>
+                <p><%= link_to "Reserved", reservedItems_path %> ( <%= @items_reserved.length %>)</p>
+            <% end %>
+            <% if @items_available.length > 0 %>
+                <p><%= link_to "Available", availableItems_path %> ( <%= @items_available.length %>)</p>
+            <% end %>
+            
+            <% if @items_closed.length > 0 %>
+                <p><%= link_to "Closed", closedItems_path %> ( <%= @items_closed.length  %>)</p>
+            <% end %>
+            <% if @myReservedItems.length > 0 && current_user == @user %>
+                <p><%= link_to "Reserved by me", myReservedItems_path %> ( <%= @myReservedItems.length %>)</p>
+            <% end %>
+        </div>
 
         <div id="user_bottom_wrapper">
          
@@ -31,10 +33,10 @@
 
 
            
-        <% if user_signed_in? && current_user.id == @user.id  && @myReservedItems.length > 0 %>
-            <%= render :partial => "myReservedItems", :locals => { :item => @myReservedItems } %>
+            <% if @myReservedItems.length > 0 && current_user == @user %>
+                <%= render :partial => "myReservedItems", :locals => { :item => @myReservedItems } %>
 
-         <% end %>
+            <% end %>
    
         </div>
 

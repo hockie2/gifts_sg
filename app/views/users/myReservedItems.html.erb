@@ -9,19 +9,21 @@
                 <h2><%= @user.name %> 's LISTINGS</h2>
             <% end %>
         </div>
-        <% if @items_reserved.length > 0 %>
-            <%= link_to "Reserved", reservedItems_path %> ( <%= @items_reserved.length %>)
-        <% end %>
-        <% if @items_available.length > 0 %>
-            <%= link_to "Available", availableItems_path %> ( <%= @items_available.length %>)
-        <% end %>
-        
-        <% if @items_closed.length > 0 %>
-            <%= link_to "Closed", closedItems_path %> ( <%= @items_closed.length  %>)
-        <% end %>
-        <% if @myReservedItems.length > 0 %>
-            <%= link_to "myReservedItems", myReservedItems_path %> ( <%= @myReservedItems.length %>)
-        <% end %>
+        <div class = 'link-paths'>
+            <% if @items_reserved.length > 0 %>
+                <p><%= link_to "Reserved", reservedItems_path %> ( <%= @items_reserved.length %>)</p>
+            <% end %>
+            <% if @items_available.length > 0 %>
+                <p><%= link_to "Available", availableItems_path %> ( <%= @items_available.length %>)</p>
+            <% end %>
+            
+            <% if @items_closed.length > 0 %>
+                <p><%= link_to "Closed", closedItems_path %> ( <%= @items_closed.length  %>)</p>
+            <% end %>
+            <% if @myReservedItems.length > 0 %>
+                <p><%= link_to "Reserved by me", myReservedItems_path %> ( <%= @myReservedItems.length %>)</p>
+            <% end %>
+        </div>
 
         <div id="user_bottom_wrapper">
          
