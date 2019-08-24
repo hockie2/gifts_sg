@@ -23,8 +23,9 @@ before_action :authenticate_user!, :except => [ :show, :index ]
 
   def show
     puts params[:id]
-    @items = Item.select{|item| item.user_id == params[:id].to_i}.sort_by {|item| item.availability}
-
+    @items_reserved = Item.select{|item| item.user_id == params[:id].to_i && item.availability == "reserved"}
+    @items_available = Item.select{|item| item.user_id == params[:id].to_i && item.availability == "Available"}
+    @items_closed = Item.select{|item| item.user_id == params[:id].to_i && item.availability == "closed"}
     @user = User.find(params[:id])
     @reservedItems = Reserve.select{|item| item.user_id == params[:id].to_i}
     @myReservedItems = @reservedItems.map{|e| e.item}.sort_by {|item| item.availability}.reverse
