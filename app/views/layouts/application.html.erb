@@ -53,8 +53,8 @@
         <ul class="navbar-nav  d-flex flex-row ">
             <% if user_signed_in? %>
                 <%= button_to "GiftAway!", new_item_path, :method => "get", class:"btn btn-warning" %>
-                <a href="/users/<%= @users.id %>" class="nav-link">My Dashboard</a>
-                <li class="nav-link", id="hello"><%= image_tag("login.png", size: "15x15", class:"")%>&nbsp;&nbsp;Hello, <%= @users.name %> &nbsp;&nbsp; </li>
+                <a href="/users/<%= current_user.id %>" class="nav-link">My Dashboard</a>
+                <li class="nav-link", id="hello"><%= image_tag("login.png", size: "15x15", class:"")%>&nbsp;&nbsp;Hello, <%=current_user.name %> &nbsp;&nbsp; </li>
             <% else %>
                 <%= button_to "GiftAway!", new_user_registration_path, :method => "get", class:"btn btn-warning" %>
             <% end %>
