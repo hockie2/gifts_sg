@@ -1,0 +1,34 @@
+<div id ='items_main_wrapper'>
+
+    <div id="user_inner_wrapper">
+
+        <div id="user_top_wrapper">
+            <% if current_user && current_user.id == @user.id %>
+                <h2>MY LISTINGS</h2>
+            <% else %>
+                <h2><%= @user.name %> 's LISTINGS</h2>
+            <% end %>
+        </div>
+        <% if @items_reserved.length > 0 %>
+            <%= link_to "Reserved", reservedItems_path %> ( <%= @items_reserved.length %>)
+        <% end %>
+        <% if @items_available.length > 0 %>
+            <%= link_to "Available", availableItems_path %> ( <%= @items_available.length %>)
+        <% end %>
+        
+        <% if @items_closed.length > 0 %>
+            <%= link_to "Closed", closedItems_path %> ( <%= @items_closed.length  %>)
+        <% end %>
+        <% if @myReservedItems.length > 0 %>
+            <%= link_to "Reserved by me", myReservedItems_path %> ( <%= @myReservedItems.length %>)
+        <% end %>
+
+        <div id="user_bottom_wrapper">
+         
+            <%= render :partial => "reservedItem", :locals => { :item => @items_reserved } %>
+      
+   
+        </div>
+
+    </div>
+  </div>

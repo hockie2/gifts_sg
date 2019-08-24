@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
 
-before_action :authenticate_user!, :except => [ :show, :index ]
+before_action :authenticate_user!, :except => [:index ]
 
   def index
-    # response.send("hello")
-
+    
   end
 
   def new
@@ -21,22 +20,6 @@ before_action :authenticate_user!, :except => [ :show, :index ]
     end
   end
 
-  def show
-    puts params[:id]
-    @items_reserved = Item.select{|item| item.user_id == params[:id].to_i && item.availability == "reserved"}
-    @items_available = Item.select{|item| item.user_id == params[:id].to_i && item.availability == "Available"}
-    @items_closed = Item.select{|item| item.user_id == params[:id].to_i && item.availability == "closed"}
-    @user = User.find(params[:id])
-    @reservedItems = Reserve.select{|item| item.user_id == params[:id].to_i}
-    @myReservedItems = @reservedItems.map{|e| e.item}.sort_by {|item| item.availability}.reverse
-    if current_user 
-      @users = User.find(current_user.id)
-         
-    end
-    puts "============================="
-    puts @users.inspect
-  end
-
   def edit
     allUser = User.all
     @users = allUser.sort_by{|user| user.id}
@@ -45,7 +28,7 @@ before_action :authenticate_user!, :except => [ :show, :index ]
   end
 
   def update
-    @user = user.find(params[:id])
+    @user = User.find(params[:id])
     @user.update(user_params)
     redirect_to @user
 
@@ -57,10 +40,43 @@ before_action :authenticate_user!, :except => [ :show, :index ]
     redirect_to users_path
   end
 
+  def show
+    instance_variable_set
+  end
+
+  def reservedItems
+    instance_variable_set
+  end
+
+  def availableItems
+    instance_variable_set
+  end
+
+  def closedItems
+    instance_variable_set
+  end
+
+  def myReservedItems
+    instance_variable_set
+  end
+
+
 
 private
 
   def user_params
     params.require(:user).permit(:name, :email, :phone, :location, :encrypted_password)
+
   end
+
+  def instance_variable_set
+    @items_reserved = Item.select{|item| item.user_id == params[:id].to_i && item.availability == "reserved"}
+    @items_available = Item.select{|item| item.user_id == params[:id].to_i && item.availability == "Available"}
+    @items_closed = Item.select{|item| item.user_id == params[:id].to_i && item.availability == "closed"}
+    @user = User.find(params[:id])
+    @users= User.find(params[:id])
+    @reservedItems = Reserve.select{|item| item.user_id == params[:id].to_i}
+    @myReservedItems = @reservedItems.map{|e| e.item}.sort_by {|item| item.availability}.reverse
+  end
+
 end

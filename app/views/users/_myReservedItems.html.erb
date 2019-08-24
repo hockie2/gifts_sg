@@ -1,0 +1,42 @@
+ <hr class="dashboard_line">
+
+<div>
+    <div id="user_top_wrapper">
+        <h2>ITEMS RESERVED BY ME</h2>
+    </div>
+    <div id="user_bottom_wrapper">
+
+        <%  @myReservedItems.each do |item| %>
+
+            <div class="post_wrapper">
+                <div class="top_wrapper d-flex align-items-center d-flex justify-content-between">
+                    <span class="title"><div id="profile_pic"></div><%= item.name %></span>
+                </div>
+                <div id="photo"><%= link_to item_path(item) do %><%= cl_image_tag(item.public_id) %><% end %>
+                    <% if item.availability == 'reserved' %>
+                    <div id="reserved">RESERVED</div>
+                    <% elsif item.availability == 'closed' %>
+                        <div id="reserved">CLOSED</div>
+                    <% end %>
+                </div>
+                <div class="description_wrapper">
+                    <div id="description"><%= item.description.truncate_words(10) %></div>
+
+                    <div id="timestamp"><%= item.updated_at.strftime('%d %B') %></div>
+                    <div class="bottom_wrapper">
+                        <p id="username">posted by <a href = "/users/<%= item.user.id %>" ><%= item.user.name %></a></p>
+
+                            <% if item.availability == "reserved" %>
+                            <div id="items_controls">
+                               <form method = 'PATCH' action ='/items/<%= item.id %>/release'><button class ="item_reserved_btn btn btn-info reserve"> Release </button></form>
+                           </div>
+                           <% else %>
+
+                            <% end %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+
+    </div>
+</div>
