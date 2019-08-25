@@ -76,11 +76,23 @@
 #form_item_edit_left{
     width:40%;
     height:100%;
-    background-image: url('https://johnlewis.scene7.com/is/image/JohnLewis/furn-lights-tablet-080819?');
-    background-size: cover;
+    // background-image: url('https://johnlewis.scene7.com/is/image/JohnLewis/furn-lights-tablet-080819?');
+    // background-size: cover;
     background-position:right;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    padding-top:5px;
+     img{
+        width:98%;
+        object-fit:contain;
+        border-radius: 20px;
+        // border-bottom-left-radius: 20px;
+    }
+
+
 
 }
 
