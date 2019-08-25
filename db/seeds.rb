@@ -10,12 +10,6 @@
 #   Category.create(category: "Category ##{i}")
 # end
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> c96c16abe020e611567e427b4953f2aedcb01ee2
-
 
 items_list = [
   ["Blender", "k4rmwv9aujyvnbuww8g7", "Easy to use 3-speed blender!", "t", "reserved", "1", "2"],
