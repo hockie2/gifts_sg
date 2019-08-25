@@ -16,7 +16,7 @@
             <% if @items_available.length > 0 %>
                 <p><%= link_to "Available", availableItems_path %> ( <%= @items_available.length %>)</p>
             <% end %>
-            
+
             <% if @items_closed.length > 0 %>
                 <p><%= link_to "Closed", closedItems_path %> ( <%= @items_closed.length  %>)</p>
             <% end %>
@@ -26,18 +26,17 @@
         </div>
 
         <div id="user_bottom_wrapper">
-         
+
             <%= render :partial => "reservedItem", :locals => { :item => @items_reserved } %>
             <%= render :partial => "availableItem", :locals => { :item => @items_available } %>
             <%= render :partial => "closedItem", :locals => { :item => @items_closed } %>
 
 
-           
             <% if @myReservedItems.length > 0 && current_user == @user %>
                 <%= render :partial => "myReservedItems", :locals => { :item => @myReservedItems } %>
 
             <% end %>
-   
+
         </div>
 
     </div>
