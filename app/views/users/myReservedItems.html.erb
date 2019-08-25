@@ -3,7 +3,7 @@
     <div id="user_inner_wrapper">
 
         <div id="user_top_wrapper">
-            <% if current_user.id == @user.id %>
+            <% if current_user && current_user.id == @user.id %>
                 <h2>MY LISTINGS</h2>
             <% else %>
                 <h2><%= @user.name %> 's LISTINGS</h2>
@@ -20,23 +20,15 @@
             <% if @items_closed.length > 0 %>
                 <p><%= link_to "Closed", closedItems_path %> ( <%= @items_closed.length  %>)</p>
             <% end %>
-            <% if @myReservedItems.length > 0 && current_user == @user %>
+            <% if @myReservedItems.length > 0 %>
                 <p><%= link_to "Reserved by me", myReservedItems_path %> ( <%= @myReservedItems.length %>)</p>
             <% end %>
         </div>
 
         <div id="user_bottom_wrapper">
          
-            <%= render :partial => "reservedItem", :locals => { :item => @items_reserved } %>
-            <%= render :partial => "availableItem", :locals => { :item => @items_available } %>
-            <%= render :partial => "closedItem", :locals => { :item => @items_closed } %>
-
-
-           
-            <% if @myReservedItems.length > 0 && current_user == @user %>
-                <%= render :partial => "myReservedItems", :locals => { :item => @myReservedItems } %>
-
-            <% end %>
+            <%= render :partial => "myReservedItems", :locals => { :item => @myReservedItems } %>
+      
    
         </div>
 

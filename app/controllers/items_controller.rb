@@ -11,8 +11,9 @@ class ItemsController < ApplicationController
         end
 
 
-          if current_user
-             @users = User.find(current_user.id)
+          if user_signed_in?
+             @user = current_user
+
           end
 	  end
 
@@ -22,8 +23,8 @@ class ItemsController < ApplicationController
           @categories = Category.all
           @comments = Comment.where(item_id: params[:id].to_i).all.order('id DESC')
 
-            if current_user
-                @users = User.find(current_user.id)
+            if user_signed_in?
+                @user = current_user
             end
 
 	  end
@@ -32,7 +33,7 @@ class ItemsController < ApplicationController
 	  	@categories = Category.all
 
       if current_user
-            @users = User.find(current_user.id)
+            @user = current_user
         end
 
 	  end
@@ -41,7 +42,7 @@ class ItemsController < ApplicationController
 	  	@item = Item.find(params[:id])
 	  	@categories = Category.all
         if current_user
-            @users = User.find(current_user.id)
+            @user = User.find(current_user.id)
         end
 	  end
 
@@ -65,7 +66,7 @@ class ItemsController < ApplicationController
 	      redirect_to @item
 	    else
 	    	@categories = Category.all
-	    	@users = User.find(current_user.id)
+	    	@user = User.find(current_user.id)
 	      	render 'new'
 	    end
 	  end
@@ -81,7 +82,7 @@ class ItemsController < ApplicationController
 	  	@item = Item.find(params[:id])
 	    @item.availability = "reserved"
 	    if current_user
-         @user = User.find(current_user.id)
+         @user = current_user
       	end
 	    @reserve = Reserve.new
 
@@ -92,7 +93,7 @@ class ItemsController < ApplicationController
 
 	    @reserve.save
 	    if @item.save
-	    	redirect_to items_path
+	    	redirect_to root_path
 	    end
 	  end
 
@@ -103,21 +104,21 @@ class ItemsController < ApplicationController
 	  		puts  @item. availability
 	    @item.availability = "Available"
 	    if current_user
-         @user = User.find(current_user.id)
+         @user = current_user
       	end
 
 	    @reserve = @item.reserve
 	    @reserve.destroy
 
 	   	if @item.save
-	    	redirect_to @user
+	    	redirect_to root_path
 	    end
 	  end
 
 	  def done
 	  	@item = Item.find(params[:id])
 	    if current_user
-         @user = User.find(current_user.id)
+         @user = current_user
       	end
 	    # @reserve = @item.reserve
 	    # @reserve.destroy

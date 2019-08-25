@@ -1,0 +1,16 @@
+<% @items_closed.each do |item| %>
+       
+    <div class="post_wrapper">
+        <div class="top_wrapper d-flex align-items-center d-flex justify-content-between">
+            <span class="title"><div id="profile_pic"></div><%= item.name %></span>
+        </div>
+        <div id="photo"><%= link_to item_path(item) do %><%= cl_image_tag(item.public_id) %><% end %>
+            <div id="closed">CLOSED</div>
+        </div>  
+        <div class="description_wrapper">
+            <div id="description"><%= item.description.truncate_words(10) %></div>
+
+            <div id="timestamp"><%= item.updated_at.strftime('%d %B') %></div>
+        </div> 
+    </div>     
+<% end %>          

@@ -1,0 +1,35 @@
+ <% @items_reserved.each do |item| %>
+		<div class="post_wrapper">
+        <div class="top_wrapper d-flex align-items-center d-flex justify-content-between">
+            <span class="title"><div id="profile_pic"></div><%= item.name %></span>
+        </div>
+        <div id="photo"><%= link_to item_path(item) do %><%= cl_image_tag(item.public_id) %><% end %>
+            <div id="reserved">RESERVED</div>
+        </div>
+        <div class="description_wrapper">
+            <div id="description"><%= item.description.truncate_words(10) %></div>
+            <div id="timestamp"><%= item.updated_at.strftime('%d %B') %></div>
+            <div class="bottom_wrapper">
+
+                <% if current_user.email == item.user.email %>
+                <p id="username">posted by Me</p>
+                <div id="items_controls">
+                    <div class="controls"><%= link_to 'Edit', edit_item_path(item) %> | <%= link_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %>
+                    </div>
+                    <form method = 'PATCH' action = '/items/<%= item.id %>/done' ><button class ="item_reserved_btn btn btn-info "> Done</button></form>
+                </div>
+                
+            
+                <% elsif current_user.id == item.reserve.id %>
+                <p id="username">posted by  <a href = "/users/<%= item.user.id %>" ><%= item.user.name %></a></p>
+                    <div id="items_controls">
+                     <form method = 'PATCH' action ='/items/<%= item.id %>/release'><button class ="item_reserved_btn btn btn-info reserve"> Release </button></form>
+                    </div>
+                <% else %>
+
+                <% end %>
+
+            </div>
+        </div>
+    </div>
+<% end %>
