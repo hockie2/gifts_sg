@@ -30,5 +30,5 @@ https://giftssg.herokuapp.com
 GiftsSG - a website to allow users to pass on unwanted useable items to the less privileged.
 
 **Main Page** <br />
-![alt text](https://dl.dropboxusercontent.com/sh/t5bw0pjw4wb4bwd/AAAK7kxsB21G8d-wRTeZH3pla?dl=0)
+![alt text](https://dl.dropboxusercontent.com/s/t5bw0pjw4wb4bwd/AAAK7kxsB21G8d-wRTeZH3pla?dl=0)
 
