@@ -32,6 +32,13 @@ GiftsSG - a website to allow users to pass on unwanted useable items to the less
 **Main Page** <br />
 ![alt text](https://dl.dropboxusercontent.com/s/cbg7z7simc3wb1l/giftssg_01.jpg?dl=0)
 
+**Main Page - Items list** <br />
+![alt text](https://dl.dropboxusercontent.com/s/2oljfj9q0wepbzy/giftssg_02.jpg?dl=0)
+
+**My Dashboard** <br />
+![alt text](https://dl.dropboxusercontent.com/s/ycr0upuos4vf98g/giftssg_03.jpg?dl=0)
+
+
 
 
 
