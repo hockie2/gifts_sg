@@ -1,24 +1,35 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Project_03 - GiftsSG
+https://giftssg.herokuapp.com
 
-Things you may want to cover:
+GiftsSG - a website to allow users to pass on unwanted useable items to the less privileged.
 
-* Ruby version
+**Main Page** <br />
+![alt text](https://dl.dropboxusercontent.com/s/cbg7z7simc3wb1l/giftssg_01.jpg?dl=0)
 
-* System dependencies
+**Main Page - Items list** <br />
+![alt text](https://dl.dropboxusercontent.com/s/2oljfj9q0wepbzy/giftssg_02.jpg?dl=0)
 
-* Configuration
+**My Dashboard** <br />
+![alt text](https://dl.dropboxusercontent.com/s/ycr0upuos4vf98g/giftssg_03.jpg?dl=0)
 
-* Database creation
 
-* Database initialization
+**User Stories** <br />
+As a user, I want to be able to create posts to share what I am willing to give away. <br />
+As a user, I want to be able to reserve items that I want. <br />
+As a user, I want to be able to get the contact information of the party I am transacting with. <br />
+As a user, I want to be able to search from the available items on the site. <br />
+As a user, I want to be able to categorise the listings. <br />
 
-* How to run the test suite
+**User Personas** <br />
+1. Mrs Tang, female, 50 years old. Wants to give away items after spring cleaning for CNY. <br />
+2. John, male, 35 years old. Wants to see if he can get any interesting toys/games for his 8 year old son, Andy. Andy tends to get disinterested in toys/games quickly and John has spent lots of money buying first-hand products which are then cast aside in a matter of days.
 
-* Services (job queues, cache servers, search engines, etc.)
+* Ruby version - 2.6.3
 
-* Deployment instructions
 
-* ...
+
+
+
+
