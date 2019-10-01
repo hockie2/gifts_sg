@@ -216,3 +216,100 @@
     }
 
 }
+
+/*--------------------------------------------------------------------------------------------------------------------------*/
+/*  ##Device = Desktops  ##Screen = 1281px to higher resolution desktops*/
+@media (min-width: 1281px) {
+
+  //CSS
+
+}
+/*--------------------------------------------------------------------------------------------------------------------------*/
+/*  ##Device = Laptops, Desktops  ##Screen = B/w 1025px to 1280px */
+@media (min-width: 1025px) and (max-width: 1280px) {
+
+  //CSS
+
+}
+/*--------------------------------------------------------------------------------------------------------------------------*/
+/*  ##Device = Tablets, Ipads (portrait)  ##Screen = B/w 768px to 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  //CSS
+
+}
+/*--------------------------------------------------------------------------------------------------------------------------*/
+/*  ##Device = Tablets, Ipads (landscape)  ##Screen = B/w 768px to 1024px */
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  //CSS
+
+}
+/*--------------------------------------------------------------------------------------------------------------------------*/
+/*  ##Device = Low Resolution Tablets, Mobiles (Landscape)  ##Screen = B/w 481px to 767px */
+@media (min-width: 481px) and (max-width: 767px) {
+    #background{
+        height:40vh;
+    }
+  #categories{
+        flex-wrap:wrap;
+
+        img{
+            width:60px;
+            height:60px;
+        }
+        .category{
+            width:100%;
+            display: flex;
+            // justify-content:center;
+            padding-left:20px;
+            h2{
+                font-size:1.7em;
+                text-align:left;
+            }
+        }
+        .cat_wrapper{
+            justify-content:initial !important;
+            width: 20vw;
+            text-align:center;
+        }
+    }
+
+}
+/*--------------------------------------------------------------------------------------------------------------------------*/
+/*  ##Device = Most of the Smartphones Mobiles (Portrait)  ##Screen = B/w 320px to 479px */
+@media (min-width: 320px) and (max-width: 480px) {
+
+    body{
+        width:100%;
+        background-size: cover;
+    }
+    #background{
+        height:20vh;
+    }
+
+    #categories{
+        flex-wrap:wrap;
+
+        img{
+            width:60px;
+            height:60px;
+        }
+        .category{
+            width:100%;
+            display: flex;
+            justify-content:center;
+            margin: 0 100px;
+            h2{
+                font-size:1.7em;
+            }
+        }
+        .cat_wrapper{
+            justify-content:initial !important;
+            width: 20vw;
+            text-align:center;
+        }
+    }
+
+
+}

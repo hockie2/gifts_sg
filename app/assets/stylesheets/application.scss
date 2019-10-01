@@ -293,3 +293,168 @@ textarea{
 }
 
 /*---ABOUT ENDS-----------------------*/
+
+/*--------------------------------------------------------------------------------------------------------------------------*/
+/*  ##Device = Desktops  ##Screen = 1281px to higher resolution desktops*/
+@media (min-width: 1281px) {
+
+  //CSS
+
+}
+/*--------------------------------------------------------------------------------------------------------------------------*/
+/*  ##Device = Laptops, Desktops  ##Screen = B/w 1025px to 1280px */
+@media (min-width: 1025px) and (max-width: 1280px) {
+
+  //CSS
+
+}
+/*--------------------------------------------------------------------------------------------------------------------------*/
+/*  ##Device = Tablets, Ipads (portrait)  ##Screen = B/w 768px to 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  //CSS
+
+}
+/*--------------------------------------------------------------------------------------------------------------------------*/
+/*  ##Device = Tablets, Ipads (landscape)  ##Screen = B/w 768px to 1024px */
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  //CSS
+
+}
+/*--------------------------------------------------------------------------------------------------------------------------*/
+/*  ##Device = Low Resolution Tablets, Mobiles (Landscape)  ##Screen = B/w 481px to 767px */
+@media (min-width: 481px) and (max-width: 767px) {
+
+  body{
+        width:100%;
+        background-size: cover;
+        background-image:none;
+    }
+    #background{
+        height:0;
+    }
+    #nav_logo{
+        width:30%;
+        .logo {
+            width: 140px;
+            padding:0;
+        }
+    }
+    .navbar{
+        min-height:200px;
+        display:flex;
+        // flex-direction:column;
+        align-items:center;
+        flex-wrap:wrap;
+        // border:1px solid red;
+
+        #search{
+            max-width:100%;
+            order:3;
+            flex:none;
+
+            .form-inline {
+                justify-content:center;
+            }
+        }
+        #navbarText{
+            color:black;
+            // border:1px solid blue;
+            display:flex;
+            flex-direction:row;
+            flex-basis:150px;
+            max-width:100%;
+            justify-content:center;
+            flex-grow:0;
+            padding: 0;
+        }
+        .mr-auto, .mx-auto{
+            margin-right:0 !important;
+            justify-content:space-between;
+            width: 100%;
+        }
+        .navbar-nav {
+            flex-direction:row;
+        }
+        #nav2{
+            max-width:45%;
+            justify-content:center !important;
+            flex:none;
+        }
+
+    }
+
+
+
+
+}
+/*--------------------------------------------------------------------------------------------------------------------------*/
+/*  ##Device = Most of the Smartphones Mobiles (Portrait)  ##Screen = B/w 320px to 479px */
+@media (min-width: 320px) and (max-width: 480px) {
+
+    body{
+        width:100%;
+        background-size: cover;
+        background-image:none;
+    }
+    #background{
+        height:0;
+    }
+    .navbar{
+        min-height:200px;
+        display:flex;
+        // flex-direction:column;
+        align-items:center;
+        flex-wrap:wrap;
+        // border:1px solid red;
+
+        #search{
+            max-width:100%;
+            order:3;
+            flex:none;
+        }
+        #navbarText{
+            color:black;
+            // border:1px solid blue;
+            display:flex;
+            flex-direction:row;
+            flex-basis:60%;
+            max-width:100%;
+            justify-content:center;
+            flex-grow:0;
+            padding: 0;
+        }
+        .mr-auto, .mx-auto{
+            margin-right:0 !important;
+            justify-content:space-between;
+            width: 80%;
+        }
+        .navbar-nav {
+            flex-direction:row;
+        }
+        #nav2{
+            max-width:100%;
+            justify-content:center !important;
+            flex:none;
+        }
+
+    }
+    #nav_logo .logo {
+        width: 150px;
+    }
+     .post_wrapper {
+        width: 46%;
+        height: 260px;
+        margin: 4px;
+    }
+    #photo {
+        width: 100%;
+        height: 150px;
+    }
+    #photo img {
+        width: 100%;
+        height: 150px;
+    }
+
+}

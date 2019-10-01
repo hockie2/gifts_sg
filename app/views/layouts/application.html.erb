@@ -2,12 +2,12 @@
 <html>
   <head>
     <title>GiftsSG</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
 
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
     <%= cloudinary_js_config %>
@@ -22,7 +22,7 @@
         <%= link_to image_tag("logo_01.png", class:"logo"), "/"%>
     </div>
 
-    <div class="col-4" id="">
+    <div class="col-4" id="search">
     	<% if @search %>
     		<div class="search">
     			<form class="form-inline ">
@@ -49,7 +49,7 @@
     </ul>
 </div>
 
-    <div class="d-flex justify-content-end col-4" >
+    <div class="d-flex justify-content-end col-4" id="nav2">
         <ul class="navbar-nav  d-flex flex-row ">
             <% if user_signed_in? %>
                 <%= button_to "GiftAway!", new_item_path, :method => "get", class:"btn btn-warning" %>
